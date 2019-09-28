@@ -5,16 +5,16 @@ public interface Sales {
 	int setPayPeriod(int period);
 	//sets the pay period
 	
-	float setTradeValue();
+	double setTradeValue(double trade);
 	//sets trade value
 	
-	float determinePayment(int period, float purcahsePrice);
+	double determinePayment(int period, double purcahsePrice);
 	//pay period set by sales team, purchase price determined by offer plus/minus trade-in and interest
 	
-	float determinePurcahsePrice(float offer, float totalInterest, float tradeValue);
+	double determinePurcahsePrice(double offer, double totalInterest, double tradeValue);
 	//determined by sales team
 	
-	float determineInterest();
+	double determineInterest(double rate);
 	//determines interest
 
 }

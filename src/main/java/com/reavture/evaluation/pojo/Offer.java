@@ -6,16 +6,14 @@ public class Offer {
 	
 	private Status status;
 	
-	private float amount;
-	
-	
+	private double amount;
 	
 	
 	public Offer() {
 		super();
 	}
 
-	public Offer(Customer customer, Status status, float amount) {
+	public Offer(Customer customer, Status status, double amount) {
 		super();
 		this.customer = customer;
 		this.status = status;
@@ -39,14 +37,18 @@ public class Offer {
 		this.status = status;
 	}
 
-	public float getAmount() {
+	public double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(float amount) {
+	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 	
+
+
+
+
 
 
 
@@ -54,13 +56,14 @@ public class Offer {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Float.floatToIntBits(amount);
+		long temp;
+		temp = Double.doubleToLongBits(amount);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((customer == null) ? 0 : customer.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
 
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -70,7 +73,7 @@ public class Offer {
 		if (getClass() != obj.getClass())
 			return false;
 		Offer other = (Offer) obj;
-		if (Float.floatToIntBits(amount) != Float.floatToIntBits(other.amount))
+		if (Double.doubleToLongBits(amount) != Double.doubleToLongBits(other.amount))
 			return false;
 		if (customer == null) {
 			if (other.customer != null)
@@ -86,7 +89,10 @@ public class Offer {
 
 
 
-	enum Status{
+
+
+
+	public static enum Status{
 		ACCEPTED, REJECTED, PENDING;
 	}
 	
