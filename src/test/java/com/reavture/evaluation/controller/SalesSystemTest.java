@@ -20,8 +20,10 @@ public class SalesSystemTest {
 	
 	SalesSystem test = new SalesSystem();
 	
-	@Mock
-	Offer accepted;
+	
+	/*
+	 * @Mock Offer accepted;
+	 */
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {

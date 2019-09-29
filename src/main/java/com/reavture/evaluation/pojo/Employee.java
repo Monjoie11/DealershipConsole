@@ -12,15 +12,12 @@ public class Employee extends User {
 	
 	
 
-	public Employee(String userName, String password) {
-		super(userName, password);
-		// TODO Auto-generated constructor stub
-	}
+  
 	
 	
-	public Employee(String userName, String password, String name, Department department, float compensation,
-			String socialSecurity) {
-		super(userName, password);
+	public Employee(String userName, String password, AccessLevel accesslevel, String userId, String name,
+			Department department, float compensation, String socialSecurity) {
+		super(userName, password, accesslevel, userId);
 		this.name = name;
 		this.department = department;
 		this.compensation = compensation;
@@ -28,7 +25,24 @@ public class Employee extends User {
 	}
 	
 	
-	
+
+
+	public Employee() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+
+	public Employee(String userName, String password, AccessLevel accesslevel, String userId) {
+		super(userName, password, accesslevel, userId);
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+
 	public String getName() {
 		return name;
 	}
@@ -106,7 +120,7 @@ public class Employee extends User {
 
 
 
-	enum Department{
+	public static enum Department{
 		SALES, SERVICE, FINANCE, SUPPORT, MANAGMENT
 	}
 

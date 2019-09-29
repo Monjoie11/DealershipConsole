@@ -1,8 +1,10 @@
 package com.reavture.evaluation.pojo;
 
+import java.io.Serializable;
+
 import com.reavture.evaluation.pojo.Car;
 
-public class Customer extends User {
+public class Customer extends User implements Serializable {
 	
 	private String name;
 	
@@ -19,15 +21,11 @@ public class Customer extends User {
 	private float paymentAmount;
 	
 	
-	public Customer(String userName, String password) {
-		super(userName, password);
-		// TODO Auto-generated constructor stub
-	}
 
 
-	public Customer(String userName, String password, String name, String address, Car purchasedCar, float offer,
-			int paymentsMade, int paymentsRemaining, float paymentAmount) {
-		super(userName, password);
+	public Customer(String userName, String password, AccessLevel accesslevel, String userId, String name, String address,
+			Car purchasedCar, float offer, int paymentsMade, int paymentsRemaining, float paymentAmount) {
+		super(userName, password, accesslevel, userId);
 		this.name = name;
 		this.address = address;
 		this.purchasedCar = purchasedCar;
@@ -36,6 +34,23 @@ public class Customer extends User {
 		this.paymentsRemaining = paymentsRemaining;
 		this.paymentAmount = paymentAmount;
 	}
+	
+	
+
+
+	public Customer() {
+		super();
+	}
+
+
+
+
+	public Customer(String userName, String password, AccessLevel accesslevel, String userId) {
+		super(userName, password, accesslevel, userId);
+		// TODO Auto-generated constructor stub
+	}
+
+
 
 
 	public String getName() {

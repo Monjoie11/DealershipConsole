@@ -13,7 +13,7 @@ public class SalesSystem implements Sales {
 
 	private double totalInterest;
 
-	Offer accepted = new Offer(null , Offer.Status.ACCEPTED, 10000.00);
+
 	
 	
 
@@ -49,12 +49,15 @@ public class SalesSystem implements Sales {
 
 	@Override
 	public double determineInterest(double rate) {
+		Offer accepted = new Offer(null , Offer.Status.ACCEPTED, 10000.00);
 		if (rate < 0.03 || .26 < rate) {
 			throw new IllegalArgumentException("interest rate should be negotiated ");
 		}
 		
 
 		/*
+		 * the sales system needs some serious reworking but thats next week's battle
+		 * 
 		 * if (accepted.getStatus() == Offer.Status.ACCEPTED) { totalInterest = rate *
 		 * accepted.getAmount(); } else { throw new InvalidOfferException(); }
 		 */

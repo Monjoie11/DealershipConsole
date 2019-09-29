@@ -26,6 +26,13 @@ public class Car implements Serializable{
 		this.customer= customer;
 	}
 	
+	
+
+	public Car() {
+		super();
+	}
+
+
 
 	public String getMake() {
 		return make;
