@@ -15,6 +15,7 @@ public class CarDaoSerialzationTest {
 	
 	CarDaoSerialization carSerial = new CarDaoSerialization();
 	Car newaCar = new Car("make", "model", 2019, 1000.00, "3232422324", null);
+	Car newaCar1 = new Car("Toyota", "Tacoma", 2005, 9000.00, "3344334455", null);
 	Car lostCar = new Car("make", "model", 2019, 1000.00, null, null);
 
 	@BeforeClass
@@ -41,8 +42,20 @@ public class CarDaoSerialzationTest {
 	
 	@Test
 	public void isThisCarException() {
-		assertEquals("./database/cars/3232422324.dat", carSerial.createCar(newaCar));
-		assertEquals("./database/lostcars.dat", carSerial.createCar(lostCar));
+		//mak ea test for create car io errors
+		/*
+		 * assertEquals("./database/3232422324.dat", carSerial.createCar(newaCar));
+		 * assertEquals("./database/lostcars.dat", carSerial.createCar(lostCar));
+		 */
 	}
+	
+	@Test
+	public void readCarTest() {
+		assertEquals(carSerial.createCar(newaCar1), "./database/cars/3344334455.dat");
+		assertEquals(newaCar1, carSerial.readCar("3344334455"));
+		
+	}
+	
+	
 
 }

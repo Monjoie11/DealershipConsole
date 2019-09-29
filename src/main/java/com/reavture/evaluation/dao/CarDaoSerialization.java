@@ -43,7 +43,7 @@ public class CarDaoSerialization implements CarDao {
 	@Override
 	public Car readCar(String vin) {
 		
-		String fileName = vin+".dat";
+		String fileName = "./database/cars/" + vin + ".dat";
 		
 		Car car = null;
 		
