@@ -38,5 +38,11 @@ public class CarDaoSerialzationTest {
 		assertEquals("./database/cars/3232422324.dat", carSerial.createCar(newaCar));
 		assertEquals("./database/lostcars.dat", carSerial.createCar(lostCar));
 	}
+	
+	@Test
+	public void isThisCarException() {
+		assertEquals("./database/cars/3232422324.dat", carSerial.createCar(newaCar));
+		assertEquals("./database/lostcars.dat", carSerial.createCar(lostCar));
+	}
 
 }
