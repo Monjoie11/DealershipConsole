@@ -7,6 +7,6 @@ public interface EmployeeDao {
 	
 	public String createEmployee(Employee e);
 	
-	public User readEmployee(String employeeId);
+	public Employee readEmployee(String employeeId);
 
 }

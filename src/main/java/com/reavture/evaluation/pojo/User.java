@@ -112,7 +112,7 @@ public class User implements Serializable{
 
 
 	public static enum AccessLevel{
-	  EMPLOYEE, USER, SYSTEM;
+	  EMPLOYEE, USER, SYSTEM, CUSTOMER;
 	}
 
 	

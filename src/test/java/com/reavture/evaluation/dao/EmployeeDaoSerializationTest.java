@@ -19,7 +19,8 @@ public class EmployeeDaoSerializationTest {
 			"lastName1", "employeeId1", Department.SALES, (float) 11.11, "11111111");
 	Employee lostEmployee = new Employee("userName1", "password1", AccessLevel.EMPLOYEE, "userId1", "firstName1",
 			"lastName1", null, Department.SALES, (float) 11.11, "11111111");
-	
+	Employee newEmployee1 = new Employee("userName1", "password1", AccessLevel.EMPLOYEE, "userId1", "firstName1",
+			"lastName1", "employeeId1", Department.SALES, (float) 11.11, "111111111");
 
 
 	@BeforeClass
@@ -42,6 +43,11 @@ public class EmployeeDaoSerializationTest {
 	public void isThisEmployee() {
 		assertEquals("./database/employees/employeeId1.dat", employeeSerial.createEmployee(newEmployee));
 		assertEquals("./database/newemployees.dat", employeeSerial.createEmployee(lostEmployee));
+	}
+	
+	@Test
+	public void readEmployeeTest() {
+		assertEquals(newEmployee1, employeeSerial.readEmployee("employeeId1"));
 	}
 
 }
