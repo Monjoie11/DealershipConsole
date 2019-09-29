@@ -2,9 +2,9 @@ package com.reavture.evaluation.dao;
 
 import com.reavture.evaluation.pojo.Car;
 	
-public interface Cardao {
+public interface CarDao {
 
-		public void createCar(Car c);
+		public String createCar(Car c);
 		
 		public Car readCar(String vin);
 		

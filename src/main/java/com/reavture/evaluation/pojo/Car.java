@@ -10,11 +10,11 @@ public class Car {
 	
 	private int year;
 	
-	private float price;
+	private double price;
 	
 	private Customer customer; 
 	
-	public Car(String make, String model, int year, float price) {
+	public Car(String make, String model, int year, double price, String vin, Customer customer) {
 		super();
 		this.make = make;
 		this.model = model;
@@ -49,7 +49,7 @@ public class Car {
 		this.year = year;
 	}
 
-	public float getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
@@ -86,7 +86,9 @@ public class Car {
 		result = prime * result + ((customer == null) ? 0 : customer.hashCode());
 		result = prime * result + ((make == null) ? 0 : make.hashCode());
 		result = prime * result + ((model == null) ? 0 : model.hashCode());
-		result = prime * result + Float.floatToIntBits(price);
+		long temp;
+		temp = Double.doubleToLongBits(price);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((vin == null) ? 0 : vin.hashCode());
 		result = prime * result + year;
 		return result;
@@ -117,7 +119,7 @@ public class Car {
 				return false;
 		} else if (!model.equals(other.model))
 			return false;
-		if (Float.floatToIntBits(price) != Float.floatToIntBits(other.price))
+		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
 		if (vin == null) {
 			if (other.vin != null)
@@ -128,6 +130,10 @@ public class Car {
 			return false;
 		return true;
 	}
+
+
+
+
 
 
 
