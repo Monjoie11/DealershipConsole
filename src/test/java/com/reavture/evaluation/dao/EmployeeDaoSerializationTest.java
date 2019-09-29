@@ -39,8 +39,8 @@ public class EmployeeDaoSerializationTest {
 	}
 
 	@Test
-	public void isThisUser() {
-		assertEquals("./database/employees/employeeId.dat", employeeSerial.createEmployee(newEmployee));
+	public void isThisEmployee() {
+		assertEquals("./database/employees/employeeId1.dat", employeeSerial.createEmployee(newEmployee));
 		assertEquals("./database/newemployees.dat", employeeSerial.createEmployee(lostEmployee));
 	}
 
