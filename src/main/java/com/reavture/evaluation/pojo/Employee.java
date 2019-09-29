@@ -1,8 +1,14 @@
 package com.reavture.evaluation.pojo;
 
-public class Employee extends User {
+import java.io.Serializable;
+
+public class Employee extends User implements Serializable{
 	
-	private String name;
+	private String firstName;
+	
+	private String lastName;
+	
+	private String employeeId;
 	
 	private Department department;
 	
@@ -13,19 +19,23 @@ public class Employee extends User {
 	
 
   
-	
-	
-	public Employee(String userName, String password, AccessLevel accesslevel, String userId, String name,
-			Department department, float compensation, String socialSecurity) {
+
+	public Employee(String userName, String password, AccessLevel accesslevel, String userId, String firstName,
+			String lastName, String employeeId, Department department, float compensation, String socialSecurity) {
 		super(userName, password, accesslevel, userId);
-		this.name = name;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.employeeId = employeeId;
 		this.department = department;
 		this.compensation = compensation;
 		this.socialSecurity = socialSecurity;
 	}
 	
 	
-
+	public Employee(String userName, String password, AccessLevel accesslevel, String userId) {
+		super(userName, password, accesslevel, userId);
+		// TODO Auto-generated constructor stub
+	}
 
 	public Employee() {
 		super();
@@ -33,23 +43,33 @@ public class Employee extends User {
 	}
 
 
-
-
-	public Employee(String userName, String password, AccessLevel accesslevel, String userId) {
-		super(userName, password, accesslevel, userId);
-		// TODO Auto-generated constructor stub
+	public String getFirstName() {
+		return firstName;
 	}
 
 
-
-
-	public String getName() {
-		return name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 
-	public void setName(String name) {
-		this.name = name;
+	public String getLastName() {
+		return lastName;
+	}
+
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+
+	public String getEmployeeId() {
+		return employeeId;
+	}
+
+
+	public void setEmployeeId(String employeeId) {
+		this.employeeId = employeeId;
 	}
 
 
@@ -82,7 +102,6 @@ public class Employee extends User {
 		this.socialSecurity = socialSecurity;
 	}
 
-	
 
 
 	@Override
@@ -91,7 +110,9 @@ public class Employee extends User {
 		int result = super.hashCode();
 		result = prime * result + Float.floatToIntBits(compensation);
 		result = prime * result + ((department == null) ? 0 : department.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((employeeId == null) ? 0 : employeeId.hashCode());
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		return result;
 	}
 
@@ -109,13 +130,24 @@ public class Employee extends User {
 			return false;
 		if (department != other.department)
 			return false;
-		if (name == null) {
-			if (other.name != null)
+		if (employeeId == null) {
+			if (other.employeeId != null)
 				return false;
-		} else if (!name.equals(other.name))
+		} else if (!employeeId.equals(other.employeeId))
+			return false;
+		if (firstName == null) {
+			if (other.firstName != null)
+				return false;
+		} else if (!firstName.equals(other.firstName))
+			return false;
+		if (lastName == null) {
+			if (other.lastName != null)
+				return false;
+		} else if (!lastName.equals(other.lastName))
 			return false;
 		return true;
 	}
+
 
 
 

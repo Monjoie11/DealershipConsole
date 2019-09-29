@@ -20,7 +20,7 @@ public class Driver {
 		 * carDao.createCar(car);
 		 */
 		  
-		  User newUser = new User("userName5", "password4", User.AccessLevel.USER, "userId4");
+		  User newUser = new User("userName9", "password9", User.AccessLevel.USER, "userId9");
 		  userDao.createUser(newUser);
 		 
 	}
