@@ -52,5 +52,11 @@ public class FindObjectInFolderTest {
 	public void testEmployee() {
 		assertEquals(newEmployee, findCustomer.employeeFromUser(newUser1));
 	}
+	
+	@Test
+	public void testCarList() {
+		assertEquals(newEmployee, findCustomer.getAllCars());
+	}
+	
 
 }

@@ -16,6 +16,7 @@ import com.reavture.evaluation.pojo.Employee.Department;
 import com.reavture.evaluation.pojo.Offer.Status;
 import com.reavture.evaluation.pojo.User.AccessLevel;
 import com.reavture.evaluation.ui.CustomerCreateScreen;
+import com.reavture.evaluation.ui.CustomerSelectionScreen;
 import com.reavture.evaluation.ui.LoginUi;
 import com.reavture.evaluation.ui.SecondScreenUi;
 
@@ -28,6 +29,7 @@ public class Driver {
 
 	public static void main(String[] args) {
  
+		String flowTree = null;
 		
 		LoginUi login = new LoginUi();
 		
@@ -41,18 +43,18 @@ public class Driver {
 		
 		CustomerCreateScreen custCreate = new CustomerCreateScreen();
 		
+		CustomerSelectionScreen css = new CustomerSelectionScreen();
+		
 		FindObjectInFolder findObject = new FindObjectInFolder();
 		
 		String selection = secondScreen.pickType();
 		
 		switch(selection) {
 		case "create": customer = custCreate.createCustomer(user);
-		System.out.println("Hello " + customer.getFirstName() + " " + customer.getLastName() + " " +  
-			    "what can i do for you?");
-			break;
 		case "customer": customer = findObject.customerFromUser(user);
 		System.out.println("Hello " + customer.getFirstName() + " " + customer.getLastName() + " " +  
 		    "what can i do for you?");
+		flowTree = css.customerMenu();
 			break;
 		case "emloyee": employee = findObject.employeeFromUser(user);
 		System.out.println("Hello " + employee.getFirstName() + " " + employee.getLastName() + " " +  
@@ -61,8 +63,11 @@ public class Driver {
 		default: System.out.println("if you're reading this, something has gone terribly wrong here");
 		}
 		
-		
-		
+		switch(flowTree) {
+		case "lot": //print lot
+			break;
+		default: System.out.println("if you're reading this, something has gone terribly wrong here");
+		}
 		/*
 		 * Car car = new Car("Toyota", "Tacoma", 2005, 9000.00, "3344334455", null);
 		 * carDao.createCar(car);
