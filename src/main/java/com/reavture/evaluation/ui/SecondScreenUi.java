@@ -9,8 +9,8 @@ public class SecondScreenUi {
 		String selection;
 		Scanner keyboard = new Scanner (System.in);
 	
-	System.out.println("If you have an employee account, press 1 and hit enter. If you have a customer account press 2 and enter. If you would like to register for a customer account press any other key and hit enter.");
-	
+	System.out.println("If you have an employee account, press 1 and hit enter. If you have a customer account press 2 and enter.");
+	System.out.println( "If you would like to register for a customer account press any other key and hit enter.");
 	switch(keyboard.nextLine()) {
 	
 	case "1": selection = "employee";

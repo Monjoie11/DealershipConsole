@@ -15,7 +15,9 @@ import com.reavture.evaluation.pojo.User;
 import com.reavture.evaluation.pojo.Employee.Department;
 import com.reavture.evaluation.pojo.Offer.Status;
 import com.reavture.evaluation.pojo.User.AccessLevel;
+import com.reavture.evaluation.ui.CustomerCreateScreen;
 import com.reavture.evaluation.ui.LoginUi;
+import com.reavture.evaluation.ui.SecondScreenUi;
 
 public class Driver {
 	
@@ -29,6 +31,22 @@ public class Driver {
 		LoginUi login = new LoginUi();
 		
 		User user = login.userLogin();
+		
+		SecondScreenUi secondScreen = new SecondScreenUi();
+		
+		CustomerCreateScreen custCreate = new CustomerCreateScreen();
+		
+		String selection = secondScreen.pickType();
+		
+		switch(selection) {
+		case "create": custCreate.createCustomer(user);
+			break;
+		case "customer": //customer menu screen
+			break;
+		case "emloyee": //employee menu screen
+			break;
+		default: //something has gone terribly wrong here
+		}
 		
 		
 		/*
