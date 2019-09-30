@@ -27,7 +27,7 @@ public class Driver {
 	private static CustomerDao customerDao = new CustomerDaoSerialization();
 
 	public static void main(String[] args) {
- /*
+ 
 		LoginUi login = new LoginUi();
 		
 		User user = login.userLogin();
@@ -49,7 +49,7 @@ public class Driver {
 			break;
 		default: System.out.println("if you're reading this, something has gone terribly wrong here");
 		}
-		*/
+		
 		
 		/*
 		 * Car car = new Car("Toyota", "Tacoma", 2005, 9000.00, "3344334455", null);
@@ -69,10 +69,12 @@ public class Driver {
 	*/
 		
 		
-		  Customer newCustomer = new Customer("userName4", "password4",
-		  AccessLevel.CUSTOMER, "userId4", "firstName4", "lastName4", "customerId4",
-		  "address4", null, null, 0, 0, 00.0f);
-		  customerDao.createCustomer(newCustomer);
+		/*
+		 * Customer newCustomer = new Customer("userName4", "password4",
+		 * AccessLevel.CUSTOMER, "userId4", "firstName4", "lastName4", "customerId4",
+		 * "address4", null, null, 0, 0, 00.0f);
+		 * customerDao.createCustomer(newCustomer);
+		 */
 		 
 		
 	}
