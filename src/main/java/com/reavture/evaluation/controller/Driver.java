@@ -28,7 +28,7 @@ public class Driver {
  
 		LoginUi login = new LoginUi();
 		
-		login.login();
+		login.userLogin();
 		
 		
 		/*

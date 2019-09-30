@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import com.reavture.evaluation.dao.UserDaoSerialization;
 import com.reavture.evaluation.pojo.User;
+import com.reavture.evaluation.pojo.User.AccessLevel;
 
 public class LoginUi {
 	
@@ -13,14 +14,18 @@ public class LoginUi {
 	 
 	 String userId;
 	 
+	 String userName;
+	 
+	 String  password;
+	 
+	 AccessLevel accesslevel;
+	 
 	 UserDaoSerialization loginSerial = new UserDaoSerialization();
 	 
 	 User user;
 
 
-	 //fileName = "./database/users/" + user.getUserId() + ".dat";
-
-		public void login() {
+		public User userLogin() {
 			Scanner keyboard = new Scanner (System.in);
 			String fileName;
 			
@@ -28,32 +33,42 @@ public class LoginUi {
 			System.out.println("Please enter your case-sensetive userId");
 			userId = keyboard.nextLine();
 			
-			
+			fileName = "./database/users/" + userId + ".dat";
+		 
+		  
+		  try {
+			scan = new Scanner (new File(fileName));
 			user = loginSerial.readUser(userId);
-	
-		    
-		/*
-		 * try {
-		 * 
-		 * scan = new Scanner (new File("./database/users/" + userId + ".dat")); } catch
-		 * (FileNotFoundException e) { userId = "newUsers"; try { scan = new Scanner
-		 * (new File("./database/users/" + userId + ".dat")); } catch
-		 * (FileNotFoundException e1) { // TODO Auto-generated catch block
-		 * e1.printStackTrace(); } }
-		 */
+			System.out.println("Hey there " + userId + ". Enter your case-sensitive password");
+			password = keyboard.nextLine();
+			if(password.equals(user.getPassword())){
+			System.out.println("Thank you " + userId + ". Welcome back.");
+			return user;
+			} else {
+				System.out.println("Thank you " + userId + ". Welcome back.");
+			}
 			
+		} catch (FileNotFoundException e) {
+			System.out.println("userId not found, creating new User. Enter new userName");
+			userName = keyboard.nextLine();
+			System.out.println("Now it a userId. This will be auto-generated when Jeff gets some skill");
+			userId = keyboard.nextLine();
+			System.out.println("Now enter a password. Write it down somewhere because we don't pay tech support vey well.");
+			password = keyboard.nextLine();
+			System.out.println("Your access level will be set to User until you apply for a customer account, which I see happening in the near future");
+			accesslevel = AccessLevel.USER;
+			user = new User(userName, password, accesslevel, userId);
+			loginSerial.createUser(user);
+			System.out.println("Thank you " + userId + ". Welcome to Greater Tampa motors: a good deal on a great car.");
+			return user;
+		} 
+		  
+			
+		  
+		    return null;
 		    
-		    String user = scan.nextLine();
-		    String pass = scan.nextLine(); // looks at selected file in scan
-
-		    String inpUser = keyboard.nextLine();
-		    String inpPass = keyboard.nextLine(); // gets input from user
-
-		    if (inpUser.equals(user) && inpPass.equals(pass)) {
-		        System.out.print("your login message");
-		    } else {
-		        System.out.print("your error message");
-		    }
-		}
+		   
+		  
+		} 
 
 }
