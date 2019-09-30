@@ -36,10 +36,12 @@ public class Driver {
 		 * carDao.createCar(car);
 		 */
 		  
+		
 		/*
 		 * User newUser = new User("userName9", "password9", User.AccessLevel.USER,
 		 * "userId9"); userDao.createUser(newUser);
 		 */
+		 
 		
 	/*	Employee newEmployee = new Employee("userName1", "password1", AccessLevel.EMPLOYEE, "userId1", "firstName1",
 				"lastName1", "employeeId1", Department.SALES, (float) 11.11, "111111111");

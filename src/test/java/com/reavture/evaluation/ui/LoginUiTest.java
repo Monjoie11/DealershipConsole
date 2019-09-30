@@ -1,4 +1,4 @@
-package com.revature.evaluation.utility;
+package com.reavture.evaluation.ui;
 
 import static org.junit.Assert.*;
 
@@ -12,9 +12,11 @@ import com.reavture.evaluation.dao.UserDaoSerialization;
 
 public class LoginUiTest {
 	
-	 UserDaoSerialization userSerial = new UserDaoSerialization();
-	 String userId = "userId2";
-	 LoginUi login = new LoginUi();
+	UserDaoSerialization userSerial = new UserDaoSerialization();
+	
+	LoginUi login = new LoginUi();
+	
+	String userId = "userId2";
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -33,8 +35,15 @@ public class LoginUiTest {
 	}
 
 	@Test
-	public void loginTestknown() {
-		assertEquals(userSerial.readUser(userId), LoginUi.class);
+	public void test() {
+		assertEquals(userSerial.readUser(userId), login.userLogin());
 	}
+	
+	//the test below will appear the same but I am using the catch block to construct by hitting enter when prompted for userId
 
+	
+	@Test
+	public void testnoId() {
+		assertEquals(userSerial.readUser(userId), login.userLogin());
+	}
 }

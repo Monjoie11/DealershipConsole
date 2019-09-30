@@ -4,30 +4,30 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import com.reavture.evaluation.controller.Driver;
 import com.reavture.evaluation.dao.UserDaoSerialization;
 import com.reavture.evaluation.pojo.User;
 import com.reavture.evaluation.pojo.User.AccessLevel;
 
 public class LoginUi {
 	
+	
+	 Scanner scan;
+	 
+	 String userId;
+	 
+	 String userName;
+	 
+	 String  password;
+	 
+	 AccessLevel accesslevel;
+	 
+	 UserDaoSerialization loginSerial = new UserDaoSerialization();
+	 
+	 User user;
 
+		public User userLogin() {
 
-
-		public static User userLogin() {
-			
-			 Scanner scan;
-			 
-			 String userId;
-			 
-			 String userName;
-			 
-			 String  password;
-			 
-			 AccessLevel accesslevel;
-			 
-			 UserDaoSerialization loginSerial = new UserDaoSerialization();
-			 
-			 User user;
 			
 			Scanner keyboard = new Scanner (System.in);
 			String fileName;
@@ -48,7 +48,8 @@ public class LoginUi {
 			System.out.println("Thank you " + userId + ". Welcome back.");
 			return user;
 			} else {
-				System.out.println("Thank you " + userId + ". Welcome back.");
+				System.out.println("password incorrect. restarting system.");
+				this.userLogin();
 			}
 			
 		} catch (FileNotFoundException e) {
