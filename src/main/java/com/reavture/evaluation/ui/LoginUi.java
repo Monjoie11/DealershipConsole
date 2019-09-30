@@ -4,23 +4,45 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import com.reavture.evaluation.dao.UserDaoSerialization;
+import com.reavture.evaluation.pojo.User;
+
 public class LoginUi {
 	
 	 Scanner scan;
-	
+	 
+	 String userId;
+	 
+	 UserDaoSerialization loginSerial = new UserDaoSerialization();
+	 
+	 User user;
+
+
+	 //fileName = "./database/users/" + user.getUserId() + ".dat";
 
 		public void login() {
+			Scanner keyboard = new Scanner (System.in);
+			String fileName;
 			
-		   
+			
+			System.out.println("Please enter your case-sensetive userId");
+			userId = keyboard.nextLine();
+			
+			
+			user = loginSerial.readUser(userId);
+	
 		    
-			try {
-				scan = new Scanner (new File("the\\dir\\myFile.extension"));
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		/*
+		 * try {
+		 * 
+		 * scan = new Scanner (new File("./database/users/" + userId + ".dat")); } catch
+		 * (FileNotFoundException e) { userId = "newUsers"; try { scan = new Scanner
+		 * (new File("./database/users/" + userId + ".dat")); } catch
+		 * (FileNotFoundException e1) { // TODO Auto-generated catch block
+		 * e1.printStackTrace(); } }
+		 */
 			
-		    Scanner keyboard = new Scanner (System.in);
+		    
 		    String user = scan.nextLine();
 		    String pass = scan.nextLine(); // looks at selected file in scan
 

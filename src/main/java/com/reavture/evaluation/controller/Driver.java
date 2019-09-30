@@ -15,6 +15,7 @@ import com.reavture.evaluation.pojo.User;
 import com.reavture.evaluation.pojo.Employee.Department;
 import com.reavture.evaluation.pojo.Offer.Status;
 import com.reavture.evaluation.pojo.User.AccessLevel;
+import com.reavture.evaluation.ui.LoginUi;
 
 public class Driver {
 	
@@ -25,7 +26,9 @@ public class Driver {
 
 	public static void main(String[] args) {
  
-		Car car = new Car("Toyota", "Tacoma", 2005, 9000.00, "3344334455", null);
+		LoginUi login = new LoginUi();
+		
+		login.login();
 		
 		
 		/*
@@ -43,8 +46,12 @@ public class Driver {
 		 employeeDao.createEmployee(newEmployee);
 	*/
 		
-		  Customer newCustomer = new Customer("userName6", "password6", AccessLevel.CUSTOMER, "userId6", "firstName6",
-					"lastName6", "customerId6", "address6", car, null, 1, 8, 1000.00f);
-           customerDao.createCustomer(newCustomer);
+		/*
+		 * Customer newCustomer = new Customer("userName6", "password6",
+		 * AccessLevel.CUSTOMER, "userId6", "firstName6", "lastName6", "customerId6",
+		 * "address6", car, null, 1, 8, 1000.00f);
+		 * customerDao.createCustomer(newCustomer);
+		 */
+		
 	}
 }
