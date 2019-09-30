@@ -27,10 +27,12 @@ public class Driver {
 	private static CustomerDao customerDao = new CustomerDaoSerialization();
 
 	public static void main(String[] args) {
- 
+ /*
 		LoginUi login = new LoginUi();
 		
 		User user = login.userLogin();
+		
+		Customer customer = null;
 		
 		SecondScreenUi secondScreen = new SecondScreenUi();
 		
@@ -39,15 +41,15 @@ public class Driver {
 		String selection = secondScreen.pickType();
 		
 		switch(selection) {
-		case "create": custCreate.createCustomer(user);
+		case "create": customer = custCreate.createCustomer(user);
 			break;
-		case "customer": //customer menu screen
+		case "customer": //customer = 
 			break;
 		case "emloyee": //employee menu screen
 			break;
-		default: //something has gone terribly wrong here
+		default: System.out.println("if you're reading this, something has gone terribly wrong here");
 		}
-		
+		*/
 		
 		/*
 		 * Car car = new Car("Toyota", "Tacoma", 2005, 9000.00, "3344334455", null);
@@ -66,12 +68,12 @@ public class Driver {
 		 employeeDao.createEmployee(newEmployee);
 	*/
 		
-		/*
-		 * Customer newCustomer = new Customer("userName6", "password6",
-		 * AccessLevel.CUSTOMER, "userId6", "firstName6", "lastName6", "customerId6",
-		 * "address6", car, null, 1, 8, 1000.00f);
-		 * customerDao.createCustomer(newCustomer);
-		 */
+		
+		  Customer newCustomer = new Customer("userName4", "password4",
+		  AccessLevel.CUSTOMER, "userId4", "firstName4", "lastName4", "customerId4",
+		  "address4", null, null, 0, 0, 00.0f);
+		  customerDao.createCustomer(newCustomer);
+		 
 		
 	}
 }
