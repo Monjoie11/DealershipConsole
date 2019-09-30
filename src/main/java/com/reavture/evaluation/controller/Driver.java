@@ -1,5 +1,8 @@
 package com.reavture.evaluation.controller;
 
+import java.io.File;
+import java.util.List;
+
 import com.reavture.evaluation.dao.CarDao;
 import com.reavture.evaluation.dao.CarDaoSerialization;
 import com.reavture.evaluation.dao.CustomerDao;
@@ -27,8 +30,10 @@ public class Driver {
 	private static EmployeeDao employeeDao = new EmployeeDaoSerialization();
 	private static CustomerDao customerDao = new CustomerDaoSerialization();
 
+
 	public static void main(String[] args) {
  
+		List<File> carList = null;
 		
 		String flowTree = null;
 		
@@ -65,7 +70,8 @@ public class Driver {
 		}
 		
 		switch(flowTree) {
-		case "lot": findObject.getAllCars();
+		case "lot": carList = findObject.getAllCars();
+		css.makeAnOffer(carList, customer);
 			break;
 		default: System.out.println("if you're reading this, something has gone terribly wrong here");
 		}

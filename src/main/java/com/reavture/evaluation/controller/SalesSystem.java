@@ -1,6 +1,7 @@
 package com.reavture.evaluation.controller;
 
 import com.reavture.evaluation.exception.InvalidOfferException;
+import com.reavture.evaluation.pojo.Car;
 import com.reavture.evaluation.pojo.Offer;
 import com.reavture.evaluation.pojo.Offer.Status;
 import com.revature.evaluation.utility.Sales;
@@ -49,7 +50,8 @@ public class SalesSystem implements Sales {
 
 	@Override
 	public double determineInterest(double rate) {
-		Offer accepted = new Offer(null , Offer.Status.ACCEPTED, 10000.00);
+		Car  car = null;
+		Offer accepted = new Offer(null , Offer.Status.ACCEPTED, 10000.00, car);
 		if (rate < 0.03 || .26 < rate) {
 			throw new IllegalArgumentException("interest rate should be negotiated ");
 		}

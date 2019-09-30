@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 import com.reavture.evaluation.dao.CarDaoSerialization;
 import com.reavture.evaluation.pojo.Car;
+import com.reavture.evaluation.pojo.Customer;
 import com.reavture.evaluation.pojo.Offer;
 
 public class CustomerSelectionScreen {
@@ -18,6 +19,7 @@ public class CustomerSelectionScreen {
 	Scanner keyborad = new Scanner(System.in);
 	CarDaoSerialization serialCar = new CarDaoSerialization();
 	String vin = null;
+	Double amount = 0.0;
 	
 	public String customerMenu() {
 
@@ -34,7 +36,7 @@ public class CustomerSelectionScreen {
 		return selection;
 	}
 	
-	public Offer makeAnOffer(List<File> carList) {
+	public Offer makeAnOffer(List<File> carList, Customer customer) {
 		
 		for(File fileName: carList) {
 			
@@ -59,17 +61,26 @@ public class CustomerSelectionScreen {
 		}
 		
 		
-		
 		System.out.println("enter the vin (final two digits) of the car you're making an offer on");
 		vin = keyborad.nextLine();
+		
 		try {
 			car = serialCar.readCar(vin);
 		} catch (Exception e) {
 			System.out.println("we didn't find the car");
-			this.makeAnOffer(carList);
+			this.makeAnOffer(carList, customer);
 			e.printStackTrace();
 		}
 		
+		System.out.println("Enter the amount of your offer in dollars");
+		
+		vin = keyborad.nextLine();
+		
+		amount = Double.parseDouble(vin);
+		
+		offer = new Offer(customer, Offer.Status.PENDING, amount, car);
+		
+		System.out.println("Thank you! We will contact you soon!");
 		
 		
 		return offer;
