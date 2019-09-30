@@ -65,7 +65,7 @@ public class Driver {
 		}
 		
 		switch(flowTree) {
-		case "lot": //print lot
+		case "lot": findObject.getAllCars();
 			break;
 		default: System.out.println("if you're reading this, something has gone terribly wrong here");
 		}

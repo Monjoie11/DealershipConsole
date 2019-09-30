@@ -8,47 +8,66 @@ public class Offer {
 	
 	private double amount;
 	
+	private Car car;
+	
+	
 	
 	public Offer() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
+	
+	
 
-	public Offer(Customer customer, Status status, double amount) {
+	public Offer(Customer customer, Status status, double amount, Car car) {
 		super();
 		this.customer = customer;
 		this.status = status;
 		this.amount = amount;
+		this.car = car;
 	}
+
 	
 	
+
 	public Customer getCustomer() {
 		return customer;
 	}
 
+
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+	
 
 	public Status getStatus() {
 		return status;
 	}
 
+
 	public void setStatus(Status status) {
 		this.status = status;
 	}
+
 
 	public double getAmount() {
 		return amount;
 	}
 
+
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	
 
 
+	public Car getCar() {
+		return car;
+	}
 
 
+	public void setCar(Car car) {
+		this.car = car;
+	}
 
 
 
@@ -59,10 +78,13 @@ public class Offer {
 		long temp;
 		temp = Double.doubleToLongBits(amount);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((car == null) ? 0 : car.hashCode());
 		result = prime * result + ((customer == null) ? 0 : customer.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -75,6 +97,11 @@ public class Offer {
 		Offer other = (Offer) obj;
 		if (Double.doubleToLongBits(amount) != Double.doubleToLongBits(other.amount))
 			return false;
+		if (car == null) {
+			if (other.car != null)
+				return false;
+		} else if (!car.equals(other.car))
+			return false;
 		if (customer == null) {
 			if (other.customer != null)
 				return false;
@@ -84,9 +111,6 @@ public class Offer {
 			return false;
 		return true;
 	}
-
-
-
 
 
 
