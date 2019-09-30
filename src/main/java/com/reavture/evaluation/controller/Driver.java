@@ -35,6 +35,8 @@ public class Driver {
 		
 		Customer customer = null;
 		
+		Employee employee = null;
+		
 		SecondScreenUi secondScreen = new SecondScreenUi();
 		
 		CustomerCreateScreen custCreate = new CustomerCreateScreen();
@@ -45,10 +47,16 @@ public class Driver {
 		
 		switch(selection) {
 		case "create": customer = custCreate.createCustomer(user);
+		System.out.println("Hello " + customer.getFirstName() + " " + customer.getLastName() + " " +  
+			    "what can i do for you?");
 			break;
 		case "customer": customer = findObject.customerFromUser(user);
+		System.out.println("Hello " + customer.getFirstName() + " " + customer.getLastName() + " " +  
+		    "what can i do for you?");
 			break;
-		case "emloyee":// employee =
+		case "emloyee": employee = findObject.employeeFromUser(user);
+		System.out.println("Hello " + employee.getFirstName() + " " + employee.getLastName() + " " +  
+			    "what can i do for you?");
 			break;
 		default: System.out.println("if you're reading this, something has gone terribly wrong here");
 		}
