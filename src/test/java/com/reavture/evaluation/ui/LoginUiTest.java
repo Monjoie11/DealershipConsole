@@ -39,7 +39,8 @@ public class LoginUiTest {
 		assertEquals(userSerial.readUser(userId), login.userLogin());
 	}
 	
-	//the test below will appear the same but I am using the catch block to construct by hitting enter when prompted for userId
+	//the test below will appear the same but I am using the catch block to construct by hitting 
+	//enter when prompted for userId and entering values I know are present in userId2
 
 	
 	@Test
