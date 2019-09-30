@@ -2,6 +2,9 @@ package com.reavture.evaluation.controller;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
+import java.util.List;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -25,6 +28,8 @@ public class FindObjectInFolderTest {
 				"lastName1", "employeeId1", Employee.Department.SALES, (float) 11.11, "111111111");
 	 
 	 User newUser1 = new User("userName1", "password1", User.AccessLevel.USER, "userId1");
+	 
+	 List<File> cars = findCustomer.getAllCars();
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -36,6 +41,7 @@ public class FindObjectInFolderTest {
 
 	@Before
 	public void setUp() throws Exception {
+		
 	}
 
 	@After
@@ -53,9 +59,10 @@ public class FindObjectInFolderTest {
 		assertEquals(newEmployee, findCustomer.employeeFromUser(newUser1));
 	}
 	
+	
 	@Test
 	public void testCarList() {
-		assertEquals(newEmployee, findCustomer.getAllCars());
+		assertEquals(cars, findCustomer.getAllCars());
 	}
 	
 

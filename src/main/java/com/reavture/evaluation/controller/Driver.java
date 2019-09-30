@@ -29,6 +29,7 @@ public class Driver {
 
 	public static void main(String[] args) {
  
+		
 		String flowTree = null;
 		
 		LoginUi login = new LoginUi();
@@ -56,7 +57,7 @@ public class Driver {
 		    "what can i do for you?");
 		flowTree = css.customerMenu();
 			break;
-		case "emloyee": employee = findObject.employeeFromUser(user);
+		case "employee": employee = findObject.employeeFromUser(user);
 		System.out.println("Hello " + employee.getFirstName() + " " + employee.getLastName() + " " +  
 			    "what can i do for you?");
 			break;
@@ -68,10 +69,15 @@ public class Driver {
 			break;
 		default: System.out.println("if you're reading this, something has gone terribly wrong here");
 		}
+		
+		
+		
+		
 		/*
-		 * Car car = new Car("Toyota", "Tacoma", 2005, 9000.00, "3344334455", null);
+		 * Car car = new Car("Make6", "Model6", 6006, 6000.00, "66", null);
 		 * carDao.createCar(car);
 		 */
+		 
 		  
 		
 		/*

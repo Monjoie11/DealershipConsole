@@ -166,7 +166,12 @@ public class FindObjectInFolder {
 				e.printStackTrace();
 			}
 		
-			System.out.print(car.getMake() + " " + car.getModel() + " " + car.getYear() + " " + car.getPrice() + " " + car.getVin());
+			try {
+				System.out.println(car.getMake() + " " + car.getModel() + " " + car.getYear() + " " + car.getPrice() + " " + car.getVin());
+			} catch (NullPointerException e) {
+				System.out.println("looks like we need to fire the data entr guy");
+				e.printStackTrace();
+			}
 			
 		}
 		
