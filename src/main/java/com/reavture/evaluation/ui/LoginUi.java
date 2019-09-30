@@ -10,22 +10,25 @@ import com.reavture.evaluation.pojo.User.AccessLevel;
 
 public class LoginUi {
 	
-	 Scanner scan;
-	 
-	 String userId;
-	 
-	 String userName;
-	 
-	 String  password;
-	 
-	 AccessLevel accesslevel;
-	 
-	 UserDaoSerialization loginSerial = new UserDaoSerialization();
-	 
-	 User user;
 
 
-		public User userLogin() {
+
+		public static User userLogin() {
+			
+			 Scanner scan;
+			 
+			 String userId;
+			 
+			 String userName;
+			 
+			 String  password;
+			 
+			 AccessLevel accesslevel;
+			 
+			 UserDaoSerialization loginSerial = new UserDaoSerialization();
+			 
+			 User user;
+			
 			Scanner keyboard = new Scanner (System.in);
 			String fileName;
 			
@@ -51,7 +54,7 @@ public class LoginUi {
 		} catch (FileNotFoundException e) {
 			System.out.println("userId not found, creating new User. Enter new userName");
 			userName = keyboard.nextLine();
-			System.out.println("Now it a userId. This will be auto-generated when Jeff gets some skill");
+			System.out.println("Now enter a userId. This will be auto-generated when Jeff gets some skill");
 			userId = keyboard.nextLine();
 			System.out.println("Now enter a password. Write it down somewhere because we don't pay tech support vey well.");
 			password = keyboard.nextLine();
