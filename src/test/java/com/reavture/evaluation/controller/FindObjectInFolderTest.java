@@ -9,6 +9,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.reavture.evaluation.pojo.Customer;
+import com.reavture.evaluation.pojo.Employee;
 import com.reavture.evaluation.pojo.User;
 import com.reavture.evaluation.pojo.User.AccessLevel;
 
@@ -19,6 +20,11 @@ public class FindObjectInFolderTest {
 				"lastName4", "customerId4", "address4", null, null, 0, 0, (float) 0.0);
 	 
 	 User newUser = new User("userName4", "password4", User.AccessLevel.USER, "userId4");
+	 
+	 Employee newEmployee = new Employee("userName1", "password1", AccessLevel.EMPLOYEE, "userId1", "firstName1",
+				"lastName1", "employeeId1", Employee.Department.SALES, (float) 11.11, "111111111");
+	 
+	 User newUser1 = new User("userName1", "password1", User.AccessLevel.USER, "userId1");
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -37,8 +43,14 @@ public class FindObjectInFolderTest {
 	}
 
 	@Test
-	public void test() {
+	public void testCustomer() {
 		assertEquals(newCustomer, findCustomer.customerFromUser(newUser));
+	}
+	
+	
+	@Test
+	public void testEmployee() {
+		assertEquals(newEmployee, findCustomer.employeeFromUser(newUser1));
 	}
 
 }

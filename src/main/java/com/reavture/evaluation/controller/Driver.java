@@ -28,6 +28,7 @@ public class Driver {
 
 	public static void main(String[] args) {
  
+		
 		LoginUi login = new LoginUi();
 		
 		User user = login.userLogin();
@@ -38,17 +39,20 @@ public class Driver {
 		
 		CustomerCreateScreen custCreate = new CustomerCreateScreen();
 		
+		FindObjectInFolder findObject = new FindObjectInFolder();
+		
 		String selection = secondScreen.pickType();
 		
 		switch(selection) {
 		case "create": customer = custCreate.createCustomer(user);
 			break;
-		case "customer": //customer = 
+		case "customer": customer = findObject.customerFromUser(user);
 			break;
-		case "emloyee": //employee menu screen
+		case "emloyee":// employee =
 			break;
 		default: System.out.println("if you're reading this, something has gone terribly wrong here");
 		}
+		
 		
 		
 		/*
@@ -63,10 +67,13 @@ public class Driver {
 		 */
 		 
 		
-	/*	Employee newEmployee = new Employee("userName1", "password1", AccessLevel.EMPLOYEE, "userId1", "firstName1",
-				"lastName1", "employeeId1", Department.SALES, (float) 11.11, "111111111");
-		 employeeDao.createEmployee(newEmployee);
-	*/
+		/*
+		 * Employee newEmployee = new Employee("userName3", "password3",
+		 * AccessLevel.EMPLOYEE, "userId3", "firstName3", "lastName3", "employeeId3",
+		 * Department.SALES, 33.33f, "333333333");
+		 * employeeDao.createEmployee(newEmployee);
+		 */
+	
 		
 		
 		/*

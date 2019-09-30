@@ -13,7 +13,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.reavture.evaluation.dao.CustomerDaoSerialization;
+import com.reavture.evaluation.dao.EmployeeDaoSerialization;
 import com.reavture.evaluation.pojo.Customer;
+import com.reavture.evaluation.pojo.Employee;
 import com.reavture.evaluation.pojo.User;
 
 public class FindObjectInFolder {
@@ -68,6 +70,65 @@ public class FindObjectInFolder {
 		
 		return customer;
 	}
+	
+	
+	
+	
+	public Employee employeeFromUser(User user) {
+		
+		Employee employee = null;
+		
+		EmployeeDaoSerialization employeeSerial = new EmployeeDaoSerialization();
+		
+		String userId = user.getUserId();
+		String matchedId = null;
+		
+		List<File> employeeList = new ArrayList<File>(); 
+		
+	
+			try {
+				employeeList = Files.walk(Paths.get("./database/employees"))
+				.filter(Files::isRegularFile)
+				.map(Path::toFile)
+				.collect(Collectors.toList());
+			} catch (IOException e) {
+				System.out.println("Our path is wrong. We have deviated from the path.");
+				e.printStackTrace();
+			}
+		
+			
+			for(File fileName: employeeList) {
+				
+				try (FileInputStream fis = new FileInputStream(fileName);
+						ObjectInputStream ois = new ObjectInputStream(fis);) {
+					employee = (Employee) ois.readObject();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				if(employee.getUserId().equals(userId)) {
+					break;
+				} else {
+					System.out.println("checking next file");
+					employee = null;
+				}
+				
+				
+			}
+			
+			if(employee.equals(null)) {
+				System.out.println("it does not appear you have a customer account");
+				//call customer creation screen. omitted here for testing
+			}
+		
+		return employee;
+	}
+	
+	
 
 }
 
