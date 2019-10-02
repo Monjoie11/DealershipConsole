@@ -57,7 +57,12 @@ public class Driver {
 		
 		switch(selection) {
 		case "create": customer = custCreate.createCustomer(user);
-		case "customer": customer = findObject.customerFromUser(user);
+		case "customer": try {
+				customer = findObject.customerFromUser(user);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		System.out.println("Hello " + customer.getFirstName() + " " + customer.getLastName() + " " +  
 		    "what can i do for you?");
 		flowTree = css.customerMenu();

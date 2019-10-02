@@ -10,6 +10,8 @@ public class Offer {
 	
 	private Car car;
 	
+	private String offerId; 
+	
 	
 	
 	public Offer() {
@@ -19,15 +21,15 @@ public class Offer {
 	
 	
 
-	public Offer(Customer customer, Status status, double amount, Car car) {
+	public Offer(Customer customer, Status status, double amount, Car car, String offerId) {
 		super();
 		this.customer = customer;
 		this.status = status;
 		this.amount = amount;
 		this.car = car;
+		this.offerId = offerId;
 	}
 
-	
 	
 
 	public Customer getCustomer() {
@@ -38,7 +40,7 @@ public class Offer {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	
+
 
 	public Status getStatus() {
 		return status;
@@ -65,9 +67,21 @@ public class Offer {
 	}
 
 
+
 	public void setCar(Car car) {
 		this.car = car;
 	}
+
+
+	public String getOfferId() {
+		return offerId;
+	}
+
+
+	public void setOfferId(String offerId) {
+		this.offerId = offerId;
+	}
+
 
 
 
@@ -80,6 +94,7 @@ public class Offer {
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((car == null) ? 0 : car.hashCode());
 		result = prime * result + ((customer == null) ? 0 : customer.hashCode());
+		result = prime * result + ((offerId == null) ? 0 : offerId.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
@@ -107,12 +122,15 @@ public class Offer {
 				return false;
 		} else if (!customer.equals(other.customer))
 			return false;
+		if (offerId == null) {
+			if (other.offerId != null)
+				return false;
+		} else if (!offerId.equals(other.offerId))
+			return false;
 		if (status != other.status)
 			return false;
 		return true;
 	}
-
-
 
 
 

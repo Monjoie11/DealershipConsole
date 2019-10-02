@@ -51,7 +51,7 @@ public class SalesSystem implements Sales {
 	@Override
 	public double determineInterest(double rate) {
 		Car  car = null;
-		Offer accepted = new Offer(null , Offer.Status.ACCEPTED, 10000.00, car);
+		Offer accepted = new Offer(null , Offer.Status.ACCEPTED, 10000.00, car, null);
 		if (rate < 0.03 || .26 < rate) {
 			throw new IllegalArgumentException("interest rate should be negotiated ");
 		}

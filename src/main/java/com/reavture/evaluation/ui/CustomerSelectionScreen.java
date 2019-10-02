@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.reavture.evaluation.dao.CarDaoSerialization;
+import com.reavture.evaluation.dao.OfferDaoSerialization;
 import com.reavture.evaluation.pojo.Car;
 import com.reavture.evaluation.pojo.Customer;
 import com.reavture.evaluation.pojo.Offer;
@@ -18,8 +19,10 @@ public class CustomerSelectionScreen {
 	String selection = null;
 	Scanner keyborad = new Scanner(System.in);
 	CarDaoSerialization serialCar = new CarDaoSerialization();
+	OfferDaoSerialization serialOffer = new OfferDaoSerialization();
 	String vin = null;
 	Double amount = 0.0;
+	String offerId = null;
 	
 	public String customerMenu() {
 
@@ -78,7 +81,13 @@ public class CustomerSelectionScreen {
 		
 		amount = Double.parseDouble(vin);
 		
-		offer = new Offer(customer, Offer.Status.PENDING, amount, car);
+		System.out.println("Now enter an offerId. This will autogenerate in later versions of this application");
+		
+		offerId = keyborad.nextLine();
+		
+		offer = new Offer(customer, Offer.Status.PENDING, amount, car, offerId);
+		
+		serialOffer.createOffer(offer);
 		
 		System.out.println("Thank you! We will contact you soon!");
 		
