@@ -142,6 +142,14 @@ public class Car implements Serializable{
 
 
 
+	@Override
+	public String toString() {
+		return "Car [make=" + make + ", model=" + model + ", vin=" + vin + ", year=" + year + ", price=" + price
+				+ ", customer=" + customer + "]";
+	}
+
+
+
 
 
 

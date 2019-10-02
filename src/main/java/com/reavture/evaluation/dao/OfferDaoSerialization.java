@@ -18,7 +18,7 @@ public class OfferDaoSerialization implements OfferDao{
 			String fileName;	
 			
 			if (offer.getOfferId() != null) {
-				fileName = "./database/offer/" + offer.getOfferId() + ".dat";
+				fileName = "./database/offers/" + offer.getOfferId() + ".dat";
 			} else {
 				fileName = "./database/newoffers.dat";
 			}
@@ -40,7 +40,7 @@ public class OfferDaoSerialization implements OfferDao{
 
 	@Override
 	public Offer readOffer(String offerId) {
-String fileName = "./database/offerId/" + offerId + ".dat";
+String fileName = "./database/offers/" + offerId + ".dat";
 		
 		Offer offer = null;
 		

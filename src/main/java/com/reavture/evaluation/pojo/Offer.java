@@ -1,6 +1,8 @@
 package com.reavture.evaluation.pojo;
 
-public class Offer {
+import java.io.Serializable;
+
+public class Offer implements Serializable{
 	
 	private Customer customer;
 	

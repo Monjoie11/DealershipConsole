@@ -65,5 +65,8 @@ public class FindObjectInFolderTest {
 		assertEquals(cars, findCustomer.getAllCars());
 	}
 	
+	//test the view customercars method
+	
+	//test the changes to the view lot method where it now only grabs a list of the cars where customer == null
 
 }

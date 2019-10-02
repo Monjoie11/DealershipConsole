@@ -167,7 +167,9 @@ public class FindObjectInFolder {
 			}
 		
 			try {
+				if(car.getCustomer() == null) {
 				System.out.println(car.getMake() + " " + car.getModel() + " " + car.getYear() + " " + car.getPrice() + " " + car.getVin());
+				}
 			} catch (NullPointerException e) {
 				System.out.println("looks like we need to fire the data entr guy");
 				e.printStackTrace();
@@ -180,6 +182,55 @@ public class FindObjectInFolder {
 		
 		return carList;
 		
+	}
+	
+	
+	public List<Car> findMyCars(Customer customer){
+		List<File> carList = new ArrayList<File>();
+		
+		List<Car> customerCars = new ArrayList<Car>(); 
+		
+		Car car = null;
+		
+		CarDaoSerialization serialCar = new CarDaoSerialization();
+		
+		try {
+			carList = Files.walk(Paths.get("./database/cars"))
+			.filter(Files::isRegularFile)
+			.map(Path::toFile)
+			.collect(Collectors.toList());
+		} catch (IOException e) {
+			System.out.println("Our path is wrong. We have deviated from the path.");
+			e.printStackTrace();
+		}
+		
+		
+		for(File fileName: carList) {
+			
+			try (FileInputStream fis = new FileInputStream(fileName);
+					ObjectInputStream ois = new ObjectInputStream(fis);) {
+				car = (Car) ois.readObject();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+			try {
+				if(customer.equals(car.getCustomer())) {
+				customerCars.add(car);	
+				System.out.println(car.getMake() + " " + car.getModel() + " " + car.getYear() + " " + car.getPrice() + " " + car.getVin());
+				}
+			} catch (NullPointerException e) {
+				System.out.println("looks like we need to fire the data entry guy");
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return customerCars;
 	}
 	
 	

@@ -32,14 +32,14 @@ public class CustomerSelectionScreen {
 		
 		String choice = keyborad.nextLine();
 		switch(choice){
-			default: selection = "lot";
+			default: selection = "seelot";
 		}
 		
 		
 		return selection;
 	}
 	
-	public Offer makeAnOffer(List<File> carList, Customer customer) {
+	public void viewCarLot(List<File> carList) {
 		
 		for(File fileName: carList) {
 			
@@ -62,6 +62,13 @@ public class CustomerSelectionScreen {
 			}
 			
 		}
+		
+	}
+	
+	
+	public Offer makeAnOffer(List<File> carList, Customer customer) {
+		
+       this.viewCarLot(carList);
 		
 		
 		System.out.println("enter the vin (final two digits) of the car you're making an offer on");

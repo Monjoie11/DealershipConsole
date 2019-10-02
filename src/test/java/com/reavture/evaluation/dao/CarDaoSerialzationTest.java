@@ -17,6 +17,7 @@ public class CarDaoSerialzationTest {
 	Car newaCar = new Car("make", "model", 2019, 1000.00, "3232422324", null);
 	Car newaCar1 = new Car("Toyota", "Tacoma", 2005, 9000.00, "3344334455", null);
 	Car lostCar = new Car("make", "model", 2019, 1000.00, null, null);
+	Car carFromFile = new Car("make1", "model1", 2001, 1000.00, "11", null);
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -53,7 +54,7 @@ public class CarDaoSerialzationTest {
 	public void readCarTest() {
 		assertEquals(carSerial.createCar(newaCar1), "./database/cars/3344334455.dat");
 		assertEquals(newaCar1, carSerial.readCar("3344334455"));
-		
+		assertEquals(carFromFile, carSerial.readCar("11"));
 	}
 	
 	

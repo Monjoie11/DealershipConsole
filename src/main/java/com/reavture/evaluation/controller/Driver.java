@@ -9,6 +9,8 @@ import com.reavture.evaluation.dao.CustomerDao;
 import com.reavture.evaluation.dao.CustomerDaoSerialization;
 import com.reavture.evaluation.dao.EmployeeDao;
 import com.reavture.evaluation.dao.EmployeeDaoSerialization;
+import com.reavture.evaluation.dao.OfferDao;
+import com.reavture.evaluation.dao.OfferDaoSerialization;
 import com.reavture.evaluation.dao.UserDao;
 import com.reavture.evaluation.dao.UserDaoSerialization;
 import com.reavture.evaluation.pojo.Car;
@@ -16,6 +18,7 @@ import com.reavture.evaluation.pojo.Customer;
 import com.reavture.evaluation.pojo.Employee;
 import com.reavture.evaluation.pojo.User;
 import com.reavture.evaluation.pojo.Employee.Department;
+import com.reavture.evaluation.pojo.Offer;
 import com.reavture.evaluation.pojo.Offer.Status;
 import com.reavture.evaluation.pojo.User.AccessLevel;
 import com.reavture.evaluation.ui.CustomerCreateScreen;
@@ -29,13 +32,16 @@ public class Driver {
 	private static UserDao userDao = new UserDaoSerialization();
 	private static EmployeeDao employeeDao = new EmployeeDaoSerialization();
 	private static CustomerDao customerDao = new CustomerDaoSerialization();
-
+    private static OfferDao    offerDao    = new OfferDaoSerialization();
 
 	public static void main(String[] args) {
  
+		/*
 		List<File> carList = null;
 		
-		String flowTree = null;
+		String customerSelection = null;
+		
+		String employeeSelection= null;
 		
 		LoginUi login = new LoginUi();
 		
@@ -55,32 +61,49 @@ public class Driver {
 		
 		String selection = secondScreen.pickType();
 		
+		
 		switch(selection) {
 		case "create": customer = custCreate.createCustomer(user);
 		case "customer": try {
 				customer = findObject.customerFromUser(user);
 			} catch (Exception e) {
+				System.out.println("it does not appear that you have a customer account");
+				secondScreen.pickType();
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		System.out.println("Hello " + customer.getFirstName() + " " + customer.getLastName() + " " +  
 		    "what can i do for you?");
-		flowTree = css.customerMenu();
+		customerSelection = css.customerMenu();
 			break;
-		case "employee": employee = findObject.employeeFromUser(user);
+		case "employee": try {
+			System.out.println("it does not appear that you have a customer account");
+			secondScreen.pickType();
+				employee = findObject.employeeFromUser(user);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		System.out.println("Hello " + employee.getFirstName() + " " + employee.getLastName() + " " +  
 			    "what can i do for you?");
 			break;
 		default: System.out.println("if you're reading this, something has gone terribly wrong here");
 		}
 		
-		switch(flowTree) {
-		case "lot": carList = findObject.getAllCars();
-		css.makeAnOffer(carList, customer);
+		customerSelection = css.customerMenu();
+		switch(customerSelection) {
+		case "seelot": carList = findObject.getAllCars();
+		css.viewCarLot(carList);
+		css.customerMenu();
 			break;
+		case "makeOffer": carList = findObject.getAllCars();
+			css.makeAnOffer(carList, customer);
+			css.customerMenu();
+		case "viewMine": findObject.findMyCars(customer);
+		   css.customerMenu();
 		default: System.out.println("if you're reading this, something has gone terribly wrong here");
 		}
-		
+		*/
 		
 		
 		
@@ -106,13 +129,28 @@ public class Driver {
 	
 		
 		
+		
 		/*
-		 * Customer newCustomer = new Customer("userName4", "password4",
-		 * AccessLevel.CUSTOMER, "userId4", "firstName4", "lastName4", "customerId4",
-		 * "address4", null, null, 0, 0, 00.0f);
+		 * Customer newCustomer = new Customer("userName5", "password5",
+		 * AccessLevel.CUSTOMER, "userId5", "firstName5", "lastName5", "customerId5",
+		 * "address5", null, null, 0, 0, 00.0f);
 		 * customerDao.createCustomer(newCustomer);
 		 */
 		 
+		/*
+		 * Car car = new Car("Make1", "Model1", 2001, 1000.00, "11", null);
+		 * carDao.createCar(car);
+		 */
+		 
+		 
+		/*
+		 * Offer offer = new Offer(newCustomer, Offer.Status.PENDING, 999.99, car,
+		 * "offerId3"); offerDao.createOffer(offer);
+		 */
 		
+		
+		  Car car = carDao.readCar("11"); 
+		  System.out.println(car.toString());
+		 
 	}
 }
