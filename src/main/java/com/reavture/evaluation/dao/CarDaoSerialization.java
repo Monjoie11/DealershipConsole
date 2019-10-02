@@ -58,6 +58,7 @@ public class CarDaoSerialization implements CarDao {
 			e.printStackTrace();
 		}
 		
+		System.out.print(fileName);
 		return car;
 	}
 }

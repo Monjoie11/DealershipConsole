@@ -134,6 +134,18 @@ public class Offer implements Serializable{
 		return true;
 	}
 
+	
+	
+
+
+	@Override
+	public String toString() {
+		return "Offer [customer=" + customer + ", status=" + status + ", amount=" + amount + ", car=" + car
+				+ ", offerId=" + offerId + "]";
+	}
+
+
+
 
 
 	public static enum Status{

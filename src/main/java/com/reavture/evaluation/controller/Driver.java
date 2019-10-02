@@ -36,6 +36,8 @@ public class Driver {
 
 	public static void main(String[] args) {
  
+		
+		
 		/*
 		List<File> carList = null;
 		
@@ -103,8 +105,8 @@ public class Driver {
 		   css.customerMenu();
 		default: System.out.println("if you're reading this, something has gone terribly wrong here");
 		}
-		*/
 		
+		*/
 		
 		
 		/*
@@ -138,9 +140,10 @@ public class Driver {
 		 */
 		 
 		/*
-		 * Car car = new Car("Make1", "Model1", 2001, 1000.00, "11", null);
+		 * Car car = new Car("Make", "Mode", 2003, 3000.00, "33", null);
 		 * carDao.createCar(car);
 		 */
+		 
 		 
 		 
 		/*
@@ -149,8 +152,14 @@ public class Driver {
 		 */
 		
 		
-		  Car car = carDao.readCar("11"); 
+		try {
+		  Car car = carDao.readCar("44");
 		  System.out.println(car.toString());
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		 
+		 
 		 
 	}
 }

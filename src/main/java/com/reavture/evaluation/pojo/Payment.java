@@ -99,6 +99,12 @@ public class Payment implements Serializable{
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Payment [customer=" + customer + ", car=" + car + ", amount=" + amount + ", paymentId=" + paymentId
+				+ "]";
+	}
 	
 	
 
