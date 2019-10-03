@@ -37,14 +37,14 @@ public class Driver {
 	private static OfferDao offerDao = new OfferDaoSerialization();
 
 	public static void main(String[] args) {
-	/*
+	
 		Scanner keyboard = new Scanner(System.in);
 
 		boolean isCustomer = false;
 
 		boolean isEmployee = false;
 		
-		boolean notLogin = true
+		boolean notLogin = true;
 
 		List<File> carList = null;
 
@@ -161,15 +161,17 @@ public class Driver {
 				System.out.println("if you're reading this, something has gone terribly wrong here");
 			}
 		}
-*/
+
 		
 		
+		
+		/*
 		Customer customer = customerDao.readCustomer("customerId7");
 		
 		  Car car = new Car("Make10", "Model10", 2010, 10000.00, "1010", customer);
 		  carDao.createCar(car);
 		 
-		 
+		 */
 
 		
 		/*

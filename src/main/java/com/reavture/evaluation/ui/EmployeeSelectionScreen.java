@@ -165,10 +165,7 @@ public class EmployeeSelectionScreen {
 		    	vin = offer.getCar().getVin();
 		    	serialOffer.createOffer(offer);
 		    	System.out.println(offer.toString());
-		    } else {
-		    	System.out.println("Sorry I can't find the offer you selected");
-		    	this.acceptAnOffer();
-		    }
+		    } 
 		   
 		}
 		
@@ -189,13 +186,11 @@ public class EmployeeSelectionScreen {
 		    	offer.setStatus(Offer.Status.REJECTED);
 		    	serialOffer.createOffer(offer);
 		    	System.out.print(offer.toString());
-		    } else {
-		    	System.out.println("Sorry I can't find the offer you selected");
-		    }
+		    } 
 		}
 			
 			
-			modifiedOffers = this.seeOffers();
+		
 		
 
 		
@@ -284,6 +279,8 @@ public class EmployeeSelectionScreen {
 		offer = serialOffer.readOffer(offerId);
 		
 		Customer customer = offer.getCustomer();
+		
+		Car car = offer.getCar();
 		
 		System.out.println("enter the term of the loan in months. enter 0 if the customer is paying cash (which would make"
 				+ "us very sad because our business model depends on getting interest on depreciating assets.");
