@@ -37,6 +37,7 @@ public class Driver {
 	private static OfferDao offerDao = new OfferDaoSerialization();
 
 	public static void main(String[] args) {
+	/*
 		Scanner keyboard = new Scanner(System.in);
 
 		boolean isCustomer = false;
@@ -160,45 +161,57 @@ public class Driver {
 				System.out.println("if you're reading this, something has gone terribly wrong here");
 			}
 		}
+*/
+		
+		
+		Customer customer = customerDao.readCustomer("customerId7");
+		
+		  Car car = new Car("Make10", "Model10", 2010, 10000.00, "1010", customer);
+		  carDao.createCar(car);
+		 
+		 
 
+		
 		/*
-		 * Car car = new Car("Make6", "Model6", 6006, 6000.00, "66", null);
-		 * carDao.createCar(car);
+		 * User newUser = new User("userName12", "password12", User.AccessLevel.USER,
+		 * "userId12"); userDao.createUser(newUser);
 		 */
+		 
 
-		/*
-		 * User newUser = new User("userName9", "password9", User.AccessLevel.USER,
-		 * "userId9"); userDao.createUser(newUser);
-		 */
-
+		
 		/*
 		 * Employee newEmployee = new Employee("userName3", "password3",
 		 * AccessLevel.EMPLOYEE, "userId3", "firstName3", "lastName3", "employeeId3",
-		 * Department.SALES, 33.33f, "333333333");
-		 * employeeDao.createEmployee(newEmployee);
+		 * Department.SALES, 33.33f, "33"); employeeDao.createEmployee(newEmployee);
 		 */
+		 
 
+		
 		/*
-		 * Customer newCustomer = new Customer("userName5", "password5",
-		 * AccessLevel.CUSTOMER, "userId5", "firstName5", "lastName5", "customerId5",
-		 * "address5", null, null, 0, 0, 00.0f);
+		 * Customer newCustomer = new Customer("userName7", "password7",
+		 * AccessLevel.CUSTOMER, "userId6", "firstName7", "lastName7", "customerId7",
+		 * "address7", null, null, 0, 0, 00.0f);
 		 * customerDao.createCustomer(newCustomer);
 		 */
+		 
 
 		/*
 		 * Car car = new Car("Make", "Mode", 2003, 3000.00, "33", null);
 		 * carDao.createCar(car);
 		 */
-
+		
 		/*
-		 * Offer offer = new Offer(newCustomer, Offer.Status.PENDING, 999.99, car,
-		 * "offerId3"); offerDao.createOffer(offer);
-		 */
 
-		/*
-		 * try { Car car = carDao.readCar("44"); System.out.println(car.toString());
-		 * }catch (Exception e) { e.printStackTrace(); }
-		 */
+		Customer customer = customerDao.readCustomer("customerId7");
+		
+		Car car = carDao.readCar("88");
+		
+		  Offer offer = new Offer(customer, Offer.Status.PENDING, 5000.00, car, "offerId788"); 
+		  offerDao.createOffer(offer);
+		  
+		  */
+		 
 
+	
 	}
 }
