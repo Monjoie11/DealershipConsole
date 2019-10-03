@@ -9,15 +9,19 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.reavture.evaluation.dao.CarDaoSerialization;
 import com.reavture.evaluation.dao.CustomerDaoSerialization;
 import com.reavture.evaluation.dao.EmployeeDaoSerialization;
+import com.reavture.evaluation.dao.PaymentDaoSerialization;
 import com.reavture.evaluation.pojo.Car;
 import com.reavture.evaluation.pojo.Customer;
 import com.reavture.evaluation.pojo.Employee;
+import com.reavture.evaluation.pojo.Offer;
+import com.reavture.evaluation.pojo.Payment;
 import com.reavture.evaluation.pojo.User;
 
 public class FindObjectInFolder {
@@ -185,58 +189,9 @@ public class FindObjectInFolder {
 	}
 	
 	
-	public List<Car> findMyCars(Customer customer){
-		List<File> carList = new ArrayList<File>();
-		
-		List<Car> customerCars = new ArrayList<Car>(); 
-		
-		Car car = null;
-		
-		CarDaoSerialization serialCar = new CarDaoSerialization();
-		
-		try {
-			carList = Files.walk(Paths.get("./database/cars"))
-			.filter(Files::isRegularFile)
-			.map(Path::toFile)
-			.collect(Collectors.toList());
-		} catch (IOException e) {
-			System.out.println("Our path is wrong. We have deviated from the path.");
-			e.printStackTrace();
-		}
-		
-		
-		for(File fileName: carList) {
-			
-			try (FileInputStream fis = new FileInputStream(fileName);
-					ObjectInputStream ois = new ObjectInputStream(fis);) {
-				car = (Car) ois.readObject();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		
-			try {
-				if(customer.equals(car.getCustomer())) {
-				customerCars.add(car);	
-				System.out.println(car.getMake() + " " + car.getModel() + " " + car.getYear() + " " + car.getPrice() + " " + car.getVin());
-				}
-			} catch (NullPointerException e) {
-				System.out.println("looks like we need to fire the data entry guy");
-				e.printStackTrace();
-			}
-			
-		}
-		
-		return customerCars;
-	}
+
 	
-	
-	
-	
-	
+
 
 }
 

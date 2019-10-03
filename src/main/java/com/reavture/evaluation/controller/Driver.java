@@ -2,6 +2,7 @@ package com.reavture.evaluation.controller;
 
 import java.io.File;
 import java.util.List;
+import java.util.Scanner;
 
 import com.reavture.evaluation.dao.CarDao;
 import com.reavture.evaluation.dao.CarDaoSerialization;
@@ -35,10 +36,10 @@ public class Driver {
     private static OfferDao    offerDao    = new OfferDaoSerialization();
 
 	public static void main(String[] args) {
- 
+        Scanner keyboard = new Scanner(System.in);
 		
+		boolean isCustomer;
 		
-		/*
 		List<File> carList = null;
 		
 		String customerSelection = null;
@@ -76,7 +77,7 @@ public class Driver {
 			}
 		System.out.println("Hello " + customer.getFirstName() + " " + customer.getLastName() + " " +  
 		    "what can i do for you?");
-		customerSelection = css.customerMenu();
+		isCustomer = true;
 			break;
 		case "employee": try {
 			System.out.println("it does not appear that you have a customer account");
@@ -92,6 +93,8 @@ public class Driver {
 		default: System.out.println("if you're reading this, something has gone terribly wrong here");
 		}
 		
+		while(isCustomer) {
+		
 		customerSelection = css.customerMenu();
 		switch(customerSelection) {
 		case "seelot": carList = findObject.getAllCars();
@@ -106,7 +109,23 @@ public class Driver {
 		default: System.out.println("if you're reading this, something has gone terribly wrong here");
 		}
 		
-		*/
+		}
+		
+		System.out.println("if you'd like to accept an offer, type 5 and hit enter");
+		System.out.println("If no offers are acceptable, type 9 and hit enter to reject all");
+		System.out.println("If you're not yet ready for this kind of commitment, type 1 and hit enter");
+		
+		 selection = keyboard.nextLine();
+		
+		switch(selection) {
+		case "1": //write code to go back to employee menu
+			break;
+		case "5": // code to accept one offer and reject all others
+			break;
+		case "9": // code to reject all offers
+			break;
+			
+		}
 		
 		
 		/*
@@ -151,13 +170,10 @@ public class Driver {
 		 * "offerId3"); offerDao.createOffer(offer);
 		 */
 		
-		
-		try {
-		  Car car = carDao.readCar("44");
-		  System.out.println(car.toString());
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
+		/*
+		 * try { Car car = carDao.readCar("44"); System.out.println(car.toString());
+		 * }catch (Exception e) { e.printStackTrace(); }
+		 */
 		 
 		 
 		 
