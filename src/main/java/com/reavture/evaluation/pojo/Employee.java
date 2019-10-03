@@ -152,6 +152,16 @@ public class Employee extends User implements Serializable{
 
 
 
+	@Override
+	public String toString() {
+		return "Employee [firstName=" + firstName + ", lastName=" + lastName + ", employeeId=" + employeeId
+				+ ", department=" + department + ", compensation=" + compensation + "]";
+	}
+
+
+
+
+
 	public static enum Department{
 		SALES, SERVICE, FINANCE, SUPPORT, MANAGMENT
 	}

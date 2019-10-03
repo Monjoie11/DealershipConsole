@@ -115,6 +115,14 @@ public class User implements Serializable{
 	  EMPLOYEE, USER, SYSTEM, CUSTOMER;
 	}
 
+
+
+	@Override
+	public String toString() {
+		return "User [userName=" + userName + ", password=" + password + ", accesslevel=" + accesslevel + ", userId="
+				+ userId + "]";
+	}
+
 	
 
 	

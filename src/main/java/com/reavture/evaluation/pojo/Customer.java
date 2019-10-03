@@ -121,6 +121,13 @@ public class Customer extends User implements Serializable {
 		this.paymentAmount = paymentAmount;
 	}
 
+	@Override
+	public String toString() {
+		return "Customer [firstName=" + firstName + ", lastName=" + lastName + ", customerId=" + customerId
+				+ ", address=" + address + ", purchasedCar=" + purchasedCar + ", offer=" + offer + ", paymentsMade="
+				+ paymentsMade + ", paymentsRemaining=" + paymentsRemaining + ", paymentAmount=" + paymentAmount + "]";
+	}
+
 	
 	
 
