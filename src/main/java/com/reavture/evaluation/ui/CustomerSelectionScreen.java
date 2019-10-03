@@ -35,11 +35,20 @@ public class CustomerSelectionScreen {
 
 		
 		
-		System.out.println("we only have one choice at this time. Press any key then hit enter to view the lot");
+		System.out.println("Enter 1 to view the lot");
+		System.out.println("Enter 3 to make an offer");
+		System.out.println("Enter 5 to see all the cars you own");
+		System.out.println("Enter 7 to see all your payents");
+		System.out.println("Enter 9 to exit the program");
 		
 		String choice = keyborad.nextLine();
 		switch(choice){
-			default: selection = "seelot";
+		case "1": return "viewLot";
+		case "3": return "makeOffer";
+		case "5": return "viewMine";
+		case "7": return "viewPayments";
+		case "9": return "exit";
+			default: this.customerMenu();
 		}
 		
 		

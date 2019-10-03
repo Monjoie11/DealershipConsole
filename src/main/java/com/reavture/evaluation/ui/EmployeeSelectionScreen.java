@@ -55,6 +55,32 @@ public class EmployeeSelectionScreen {
 	
 	OfferDaoSerialization serialOffer = new OfferDaoSerialization();
 	
+	public String employeeMenu() {
+		
+		System.out.println("Enter 1 to add a car to the lot");
+		System.out.println("Enter 3 to see all pending offers");
+		System.out.println("Enter 5 if you'd like to accept an offer (and reject competing offers)");
+		System.out.println("Enter 7 to finalize an accepted offer");
+		System.out.println("Enter 9 to exit the program");
+		
+		 String selection = keyboard.nextLine();
+		
+		switch(selection) {
+		case "1": return "addCar";
+		case "3": return "seeOffers";
+		case "5": return "acceptOffer";
+		case "7": return "finalize";		
+		case "9": return "exit";
+		default : this.employeeMenu();	
+		
+		return selection;
+		}
+	}
+	
+	
+	
+	
+	
 	public List<File> seeOffers(){
 		
 		Offer offer = null;
@@ -138,9 +164,12 @@ public class EmployeeSelectionScreen {
 		    	offer.setStatus(Offer.Status.ACCEPTED);
 		    	vin = offer.getCar().getVin();
 		    	serialOffer.createOffer(offer);
+		    	System.out.println(offer.toString());
 		    } else {
 		    	System.out.println("Sorry I can't find the offer you selected");
+		    	this.acceptAnOffer();
 		    }
+		   
 		}
 		
 		for(File fileName: offerList) {
@@ -159,6 +188,7 @@ public class EmployeeSelectionScreen {
 		    if(offer.getStatus().equals(Offer.Status.PENDING) & vin.equals(offer.getCar().getVin())) {
 		    	offer.setStatus(Offer.Status.REJECTED);
 		    	serialOffer.createOffer(offer);
+		    	System.out.print(offer.toString());
 		    } else {
 		    	System.out.println("Sorry I can't find the offer you selected");
 		    }
@@ -197,7 +227,11 @@ public class EmployeeSelectionScreen {
 		
 		car = new Car(make, model, year, price, vin, null);
 		
-		return serialCar.createCar(car);
+		String filePath = serialCar.createCar(car);
+		
+		System.out.println(car.toString() + filePath);
+		
+		return filePath;
 		
 	}
 	
@@ -270,6 +304,7 @@ public class EmployeeSelectionScreen {
 		System.out.println(customer.toString());
 		
 		car.setCustomer(customer);
+		
 		serialCar.createCar(car);
 		
 		System.out.println(car.toString());
