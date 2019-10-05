@@ -27,8 +27,11 @@ import com.reavture.evaluation.ui.CustomerSelectionScreen;
 import com.reavture.evaluation.ui.EmployeeSelectionScreen;
 import com.reavture.evaluation.ui.LoginUi;
 import com.reavture.evaluation.ui.SecondScreenUi;
+import static com.revature.evaluation.utility.LoggerUtil.*;
 
 public class Driver {
+	
+	
 
 	private static CarDao carDao = new CarDaoSerialization();
 	private static UserDao userDao = new UserDaoSerialization();
@@ -37,6 +40,8 @@ public class Driver {
 	private static OfferDao offerDao = new OfferDaoSerialization();
 
 	public static void main(String[] args) {
+		
+		trace("start main method");
 	
 		Scanner keyboard = new Scanner(System.in);
 
