@@ -1,1 +1,10 @@
 2019-10-04 21:40:47 TRACE root:30 - start main method
+2019-10-05 14:10:20 TRACE root:30 - start main method
+2019-10-05 14:24:30 TRACE root:30 - start main method
+2019-10-05 14:28:17 TRACE root:30 - start main method
+2019-10-05 14:31:56 TRACE root:30 - start main method
+2019-10-05 14:35:11 TRACE root:30 - start main method
+2019-10-05 14:39:12 TRACE root:30 - start main method
+2019-10-05 14:40:52 TRACE root:30 - start main method
+2019-10-05 14:40:52 TRACE root:30 - executing insert car
+2019-10-05 17:12:03 TRACE root:30 - start main method

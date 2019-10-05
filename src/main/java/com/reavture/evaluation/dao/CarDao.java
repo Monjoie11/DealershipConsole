@@ -8,9 +8,9 @@ public interface CarDao {
 
 	public void createCar(Car car);
 
-	public Car getCar(String vin);
+	public Car getCarByVin(String vin);
 
-	public List<Car> getAllCars();
+	public List<Car> getAllCarsByCustomer(String customerId);
 
 	public void updateCar(Car cookie, String vin);
 

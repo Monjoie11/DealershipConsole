@@ -1,10 +1,12 @@
 package com.reavture.evaluation.controller;
 
 import java.io.File;
+import java.sql.Connection;
 import java.util.List;
 import java.util.Scanner;
 
 import com.reavture.evaluation.dao.CarDao;
+import com.reavture.evaluation.dao.CarDaoPostgres;
 import com.reavture.evaluation.dao.CarDaoSerialization;
 import com.reavture.evaluation.dao.CustomerDao;
 import com.reavture.evaluation.dao.CustomerDaoSerialization;
@@ -14,6 +16,7 @@ import com.reavture.evaluation.dao.OfferDao;
 import com.reavture.evaluation.dao.OfferDaoSerialization;
 import com.reavture.evaluation.dao.UserDao;
 import com.reavture.evaluation.dao.UserDaoSerialization;
+import com.reavture.evaluation.jdbc.ConnectionFactory;
 import com.reavture.evaluation.pojo.Car;
 import com.reavture.evaluation.pojo.Customer;
 import com.reavture.evaluation.pojo.Employee;
@@ -40,10 +43,29 @@ public class Driver {
 	private static EmployeeDao employeeDao = new EmployeeDaoSerialization();
 	private static CustomerDao customerDao = new CustomerDaoSerialization();
 	private static OfferDao offerDao = new OfferDaoSerialization();
+	
+	private static Connection conn = ConnectionFactory.getConnection();
+	
+	public void setConn(Connection conn) {
+		this.conn = conn;
+	}
 
 	public static void main(String[] args) {
 		
+	
+		
+		Car car = new Car(/*"make2", "model2", "vin2", 2006, 2000.00, "custId2"*/);
+		
+		CarDaoPostgres carPo = new CarDaoPostgres();
+		
 		trace("start main method");
+		
+		
+		//carPo.createCar(car);
+		
+		car = carPo.getCarByVin("vin2");
+		
+		System.out.println(car.toString());
 
 
 
@@ -179,53 +201,7 @@ public class Driver {
 		*/
 		
 		
-		/*
-		Customer customer = customerDao.readCustomer("customerId7");
 		
-		  Car car = new Car("Make10", "Model10", 2010, 10000.00, "1010", customer);
-		  carDao.createCar(car);
-		 
-		 */
-
-		
-		/*
-		 * UUser newUser = new UUser("userName12", "password12", UUser.AccessLevel.USER,
-		 * "userId12"); userDao.createUser(newUser);
-		 */
-		 
-
-		
-		/*
-		 * Employee newEmployee = new Employee("userName3", "password3",
-		 * AccessLevel.EMPLOYEE, "userId3", "firstName3", "lastName3", "employeeId3",
-		 * Department.SALES, 33.33f, "33"); employeeDao.createEmployee(newEmployee);
-		 */
-		 
-
-		
-		/*
-		 * Customer newCustomer = new Customer("userName7", "password7",
-		 * AccessLevel.CUSTOMER, "userId6", "firstName7", "lastName7", "customerId7",
-		 * "address7", null, null, 0, 0, 00.0f);
-		 * customerDao.createCustomer(newCustomer);
-		 */
-		 
-
-		/*
-		 * Car car = new Car("Make", "Mode", 2003, 3000.00, "33", null);
-		 * carDao.createCar(car);
-		 */
-		
-		/*
-
-		Customer customer = customerDao.readCustomer("customerId7");
-		
-		Car car = carDao.readCar("88");
-		
-		  Offer offer = new Offer(customer, Offer.Status.PENDING, 5000.00, car, "offerId788"); 
-		  offerDao.createOffer(offer);
-		  
-		  */
 		 
 
 	
