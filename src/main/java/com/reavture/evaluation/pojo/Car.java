@@ -14,25 +14,22 @@ public class Car implements Serializable{
 	
 	private double price;
 	
-	private Customer customer; 
-	
-	public Car(String make, String model, int year, double price, String vin, Customer customer) {
-		super();
-		this.make = make;
-		this.model = model;
-		this.year = year;
-		this.price = price;
-		this.vin= vin;
-		this.customer= customer;
-	}
-	
-	
+	private String customerId;
 
 	public Car() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-
+	public Car(String make, String model, String vin, int year, double price, String customerId) {
+		super();
+		this.make = make;
+		this.model = model;
+		this.vin = vin;
+		this.year = year;
+		this.price = price;
+		this.customerId = customerId;
+	}
 
 	public String getMake() {
 		return make;
@@ -50,6 +47,14 @@ public class Car implements Serializable{
 		this.model = model;
 	}
 
+	public String getVin() {
+		return vin;
+	}
+
+	public void setVin(String vin) {
+		this.vin = vin;
+	}
+
 	public int getYear() {
 		return year;
 	}
@@ -62,37 +67,23 @@ public class Car implements Serializable{
 		return price;
 	}
 
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
-	
-
-	public String getVin() {
-		return vin;
+	public String getCustomerId() {
+		return customerId;
 	}
 
-
-	public void setVin(String vin) {
-		this.vin = vin;
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
 	}
-
-
-	public Customer getCustomer() {
-		return customer;
-	}
-
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((customer == null) ? 0 : customer.hashCode());
+		result = prime * result + ((customerId == null) ? 0 : customerId.hashCode());
 		result = prime * result + ((make == null) ? 0 : make.hashCode());
 		result = prime * result + ((model == null) ? 0 : model.hashCode());
 		long temp;
@@ -103,7 +94,6 @@ public class Car implements Serializable{
 		return result;
 	}
 
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -113,10 +103,10 @@ public class Car implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Car other = (Car) obj;
-		if (customer == null) {
-			if (other.customer != null)
+		if (customerId == null) {
+			if (other.customerId != null)
 				return false;
-		} else if (!customer.equals(other.customer))
+		} else if (!customerId.equals(other.customerId))
 			return false;
 		if (make == null) {
 			if (other.make != null)
@@ -140,20 +130,12 @@ public class Car implements Serializable{
 		return true;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "Car [make=" + make + ", model=" + model + ", vin=" + vin + ", year=" + year + ", price=" + price
-				+ ", customer=" + customer + "]";
-	}
-
-
-
-
-
-
-
+				+ ", customerId=" + customerId + "]";
+	} 
+	
 	
 	
 	

@@ -33,6 +33,8 @@ public class Driver {
 	
 	
 
+	
+
 	private static CarDao carDao = new CarDaoSerialization();
 	private static UserDao userDao = new UserDaoSerialization();
 	private static EmployeeDao employeeDao = new EmployeeDaoSerialization();
@@ -42,6 +44,13 @@ public class Driver {
 	public static void main(String[] args) {
 		
 		trace("start main method");
+
+
+
+
+			
+		
+		/*
 	
 		Scanner keyboard = new Scanner(System.in);
 
@@ -77,7 +86,7 @@ public class Driver {
        while(notLogin) {
     	   
        
-		User user = login.userLogin();
+		UUser user = login.userLogin();
 
 		String selection = secondScreen.pickType();
 
@@ -167,7 +176,7 @@ public class Driver {
 			}
 		}
 
-		
+		*/
 		
 		
 		/*
@@ -180,7 +189,7 @@ public class Driver {
 
 		
 		/*
-		 * User newUser = new User("userName12", "password12", User.AccessLevel.USER,
+		 * UUser newUser = new UUser("userName12", "password12", UUser.AccessLevel.USER,
 		 * "userId12"); userDao.createUser(newUser);
 		 */
 		 

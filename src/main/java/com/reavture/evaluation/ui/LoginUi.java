@@ -53,13 +53,13 @@ public class LoginUi {
 			}
 			
 		} catch (FileNotFoundException e) {
-			System.out.println("userId not found, creating new User. Enter new userName");
+			System.out.println("userId not found, creating new UUser. Enter new userName");
 			userName = keyboard.nextLine();
 			System.out.println("Now enter a userId. This will be auto-generated when Jeff gets some skill");
 			userId = keyboard.nextLine();
 			System.out.println("Now enter a password. Write it down somewhere because we don't pay tech support very well.");
 			password = keyboard.nextLine();
-			System.out.println("Your access level will be set to User until you apply for a customer account, which I see happening in the near future");
+			System.out.println("Your access level will be set to UUser until you apply for a customer account, which I see happening in the near future");
 			accesslevel = AccessLevel.USER;
 			user = new User(userName, password, accesslevel, userId);
 			loginSerial.createUser(user);
