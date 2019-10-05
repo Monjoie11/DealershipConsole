@@ -2,6 +2,7 @@ package com.reavture.evaluation.controller;
 
 import java.io.File;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -38,7 +39,7 @@ public class Driver {
 
 	
 
-	private static CarDao carDao = new CarDaoSerialization();
+	
 	private static UserDao userDao = new UserDaoSerialization();
 	private static EmployeeDao employeeDao = new EmployeeDaoSerialization();
 	private static CustomerDao customerDao = new CustomerDaoSerialization();
@@ -52,9 +53,9 @@ public class Driver {
 
 	public static void main(String[] args) {
 		
-	
+	    List<Car> carList = new ArrayList<Car>();
 		
-		Car car = new Car(/*"make2", "model2", "vin2", 2006, 2000.00, "custId2"*/);
+		Car car = new Car(/* "make5", "model5", "vin5", 2006, 2000.00, "userId5" */);
 		
 		CarDaoPostgres carPo = new CarDaoPostgres();
 		
@@ -63,10 +64,15 @@ public class Driver {
 		
 		//carPo.createCar(car);
 		
-		car = carPo.getCarByVin("vin2");
+		//car = carPo.getCarByVin("vin2");
+		
+		carList = carPo.getAllCarsByUser("userId5");
+		
+		for(Car c: carList) {
 		
 		System.out.println(car.toString());
 
+		}
 
 
 

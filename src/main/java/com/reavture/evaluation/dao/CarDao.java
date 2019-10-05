@@ -10,7 +10,7 @@ public interface CarDao {
 
 	public Car getCarByVin(String vin);
 
-	public List<Car> getAllCarsByCustomer(String customerId);
+	public List<Car> getAllCarsByUser(String userId);
 
 	public void updateCar(Car cookie, String vin);
 

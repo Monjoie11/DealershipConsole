@@ -14,21 +14,21 @@ public class Car implements Serializable{
 	
 	private double price;
 	
-	private String customerId;
+	private String userId;
 
 	public Car() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Car(String make, String model, String vin, int year, double price, String customerId) {
+	public Car(String make, String model, String vin, int year, double price, String userId) {
 		super();
 		this.make = make;
 		this.model = model;
 		this.vin = vin;
 		this.year = year;
 		this.price = price;
-		this.customerId = customerId;
+		this.userId = userId;
 	}
 
 	public String getMake() {
@@ -71,19 +71,19 @@ public class Car implements Serializable{
 		this.price = price;
 	}
 
-	public String getCustomerId() {
-		return customerId;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setCustomerId(String customerId) {
-		this.customerId = customerId;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((customerId == null) ? 0 : customerId.hashCode());
+		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
 		result = prime * result + ((make == null) ? 0 : make.hashCode());
 		result = prime * result + ((model == null) ? 0 : model.hashCode());
 		long temp;
@@ -103,10 +103,10 @@ public class Car implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Car other = (Car) obj;
-		if (customerId == null) {
-			if (other.customerId != null)
+		if (userId == null) {
+			if (other.userId != null)
 				return false;
-		} else if (!customerId.equals(other.customerId))
+		} else if (!userId.equals(other.userId))
 			return false;
 		if (make == null) {
 			if (other.make != null)
@@ -133,7 +133,7 @@ public class Car implements Serializable{
 	@Override
 	public String toString() {
 		return "Car [make=" + make + ", model=" + model + ", vin=" + vin + ", year=" + year + ", price=" + price
-				+ ", customerId=" + customerId + "]";
+				+ ", userId=" + userId + "]";
 	} 
 	
 	
