@@ -75,7 +75,7 @@ public class OfferDaoPostGres implements OfferDao {
 				offer.setAmount(Double.parseDouble(rs.getString(3)));
 				offer.setCarVin(rs.getString(4));
 				offer.setOfferId(rs.getInt(5));
-				trace("get pending offers");
+				trace("get pending offers while");
 				offerList.add(offer);
 			}
 
@@ -95,10 +95,27 @@ public class OfferDaoPostGres implements OfferDao {
 		
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, Offer.Status.PENDING.toString());
-			stmt.setString(2, Integer.toString(offerId));
+			stmt.setString(1, Offer.Status.ACCEPTED.toString());
+			stmt.setInt(2, offerId);
 			stmt.executeUpdate();
-			trace("user to customer while block");
+			trace("executing accept offer");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void rejectCompetingOffers(String vin) {
+		String sql = "update offer set status = ? where carvin = ? and status = ?";
+		
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, Offer.Status.REJECTED.toString());
+			stmt.setString(2, vin);
+			stmt.setString(3, Offer.Status.PENDING.toString());
+			stmt.executeUpdate();
+			trace("executing reject competing");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

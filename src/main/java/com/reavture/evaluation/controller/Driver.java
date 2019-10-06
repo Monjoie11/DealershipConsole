@@ -53,19 +53,18 @@ public class Driver {
 
 		User user = new User("lot", "password", User.AccessLevel.USER, 0);
 
-		Car car = new Car(/*"make6", "model6", "vin6", 2006, 2000.00, "userId5"*/);
+		Car car = new Car("make6", "model6", "vin6", 2006, 2000.00, "userId5");
 
-	//	Offer offer = new Offer(user.getUserName(), Offer.Status.PENDING, 35000.89, car.getVin(), 0);
+		Offer offer = new Offer(user.getUserName(), Offer.Status.PENDING, 35000.89, car.getVin(), 0);
+		
+		offerPo.rejectCompetingOffers(offer.getCarVin());
 
-//	    offerPo.createOffer(offer);
+	//	offerPo.acceptOffer(45);
 		
-		List<Offer> offerList = offerPo.getAllOffersPending();
 		
-		for(Offer o: offerList) {
-			System.out.println(o.toString());
 		}
 		
-	}
+	
 
 	
 	
@@ -79,6 +78,14 @@ public class Driver {
 	 * 
 	 * 
 	 * userPo.updateUsertoCustomer("lot");
+	 * 
+	 * 
+	 * 	    
+		
+		List<Offer> offerList = offerPo.getAllOffersPending();
+		
+		for(Offer o: offerList) {
+			System.out.println(o.toString());
 	 * 
 	 * 
 	
