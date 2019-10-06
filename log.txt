@@ -39,3 +39,34 @@
 2019-10-06 00:00:28 TRACE root:30 - executing insert user
 2019-10-06 00:00:28 TRACE root:30 - start main method
 2019-10-06 00:00:38 TRACE root:30 - start main method
+2019-10-06 00:10:26 TRACE root:30 - get user while block
+2019-10-06 00:10:26 TRACE root:30 - start main method
+2019-10-06 00:11:27 TRACE root:30 - get user while block
+2019-10-06 00:11:27 TRACE root:30 - start main method
+2019-10-06 12:36:05 TRACE root:30 - user to customer while block
+2019-10-06 12:36:05 TRACE root:30 - start main method
+2019-10-06 14:23:58 TRACE root:30 - set name
+2019-10-06 14:23:58 TRACE root:30 - set status
+2019-10-06 14:23:58 TRACE root:30 - set amount
+2019-10-06 14:23:58 TRACE root:30 - set vin
+2019-10-06 14:23:58 TRACE root:30 - executing insert offer
+2019-10-06 14:34:47 TRACE root:30 - set name
+2019-10-06 14:34:47 TRACE root:30 - set status
+2019-10-06 14:34:47 TRACE root:30 - set amount
+2019-10-06 14:34:47 TRACE root:30 - set vin
+2019-10-06 14:34:47 TRACE root:30 - set offferid
+2019-10-06 14:36:49 TRACE root:30 - set name
+2019-10-06 14:36:49 TRACE root:30 - set status
+2019-10-06 14:36:49 TRACE root:30 - set amount
+2019-10-06 14:36:49 TRACE root:30 - set vin
+2019-10-06 14:36:49 TRACE root:30 - set offferid
+2019-10-06 14:42:04 TRACE root:30 - set name
+2019-10-06 14:42:04 TRACE root:30 - set status
+2019-10-06 14:42:04 TRACE root:30 - set amount
+2019-10-06 14:42:04 TRACE root:30 - set vin
+2019-10-06 14:42:04 TRACE root:30 - set offferidOffer [userName=lot, status=PENDING, amount=35000.89, carVin=vin6, offerId=0]
+2019-10-06 14:49:24 TRACE root:30 - set name
+2019-10-06 14:49:24 TRACE root:30 - set status
+2019-10-06 14:49:24 TRACE root:30 - set amount
+2019-10-06 14:49:24 TRACE root:30 - set vin
+2019-10-06 14:49:24 TRACE root:30 - set offferidOffer [userName=lot, status=PENDING, amount=35000.89, carVin=vin6, offerId=0]

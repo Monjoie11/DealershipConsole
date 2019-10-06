@@ -4,15 +4,15 @@ import java.io.Serializable;
 
 public class Offer implements Serializable{
 	
-	private Customer customer;
+	private String userName;
 	
 	private Status status;
 	
 	private double amount;
 	
-	private Car car;
+	private String carVin;
 	
-	private String offerId; 
+	private int offerId; 
 	
 	
 	
@@ -23,26 +23,24 @@ public class Offer implements Serializable{
 	
 	
 
-	public Offer(Customer customer, Status status, double amount, Car car, String offerId) {
+	public Offer(String userName, Status status, double amount, String carVin, int offerId) {
 		super();
-		this.customer = customer;
+		this.userName = userName;
 		this.status = status;
 		this.amount = amount;
-		this.car = car;
+		this.carVin = carVin;
 		this.offerId = offerId;
 	}
 
-	
 
-	public Customer getCustomer() {
-		return customer;
+
+	public String getUserName() {
+		return userName;
 	}
 
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
-
 
 	public Status getStatus() {
 		return status;
@@ -53,34 +51,27 @@ public class Offer implements Serializable{
 		this.status = status;
 	}
 
-
 	public double getAmount() {
 		return amount;
 	}
-
 
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 
-
-	public Car getCar() {
-		return car;
+	public String getCarVin() {
+		return carVin;
 	}
 
-
-
-	public void setCar(Car car) {
-		this.car = car;
+	public void setCarVin(String carVin) {
+		this.carVin = carVin;
 	}
 
-
-	public String getOfferId() {
+	public int getOfferId() {
 		return offerId;
 	}
 
-
-	public void setOfferId(String offerId) {
+	public void setOfferId(int offerId) {
 		this.offerId = offerId;
 	}
 
@@ -94,10 +85,10 @@ public class Offer implements Serializable{
 		long temp;
 		temp = Double.doubleToLongBits(amount);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((car == null) ? 0 : car.hashCode());
-		result = prime * result + ((customer == null) ? 0 : customer.hashCode());
-		result = prime * result + ((offerId == null) ? 0 : offerId.hashCode());
+		result = prime * result + ((carVin == null) ? 0 : carVin.hashCode());
+		result = prime * result + offerId;
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
 		return result;
 	}
 
@@ -114,35 +105,36 @@ public class Offer implements Serializable{
 		Offer other = (Offer) obj;
 		if (Double.doubleToLongBits(amount) != Double.doubleToLongBits(other.amount))
 			return false;
-		if (car == null) {
-			if (other.car != null)
+		if (carVin == null) {
+			if (other.carVin != null)
 				return false;
-		} else if (!car.equals(other.car))
+		} else if (!carVin.equals(other.carVin))
 			return false;
-		if (customer == null) {
-			if (other.customer != null)
-				return false;
-		} else if (!customer.equals(other.customer))
-			return false;
-		if (offerId == null) {
-			if (other.offerId != null)
-				return false;
-		} else if (!offerId.equals(other.offerId))
+		if (offerId != other.offerId)
 			return false;
 		if (status != other.status)
+			return false;
+		if (userName == null) {
+			if (other.userName != null)
+				return false;
+		} else if (!userName.equals(other.userName))
 			return false;
 		return true;
 	}
 
-	
-	
+
+
+
+
 
 
 	@Override
 	public String toString() {
-		return "Offer [customer=" + customer + ", status=" + status + ", amount=" + amount + ", car=" + car
+		return "Offer [userName=" + userName + ", status=" + status + ", amount=" + amount + ", carVin=" + carVin
 				+ ", offerId=" + offerId + "]";
 	}
+
+
 
 
 

@@ -79,10 +79,23 @@ public class UserDaoPostGres implements UserDao {
 	}
 
 	@Override
-	public void updateUser(String userName) {
-		// TODO Auto-generated method stub
+	public void updateUsertoCustomer(String userName) {
+		String sql = "update user_table set accesslevel = ? where username = ?";
+		
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, User.AccessLevel.CUSTOMER.toString());
+			stmt.setString(2, userName);
+			stmt.executeUpdate();
+			trace("user to customer while block");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
+		
+	
 
 	@Override
 	public void deleteUser(String userName) {
