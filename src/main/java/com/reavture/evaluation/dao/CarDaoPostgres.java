@@ -117,20 +117,20 @@ public class CarDaoPostgres implements CarDao {
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
-			/*	car.setVin(rs.getString(1));
+				car.setVin(rs.getString(1));
 				car.setMake(rs.getString(2));
 				car.setMake(rs.getString(3));
 				car.setYear(rs.getInt(4));
 				car.setPrice(rs.getDouble(5));
-				car.setuserName(rs.getString(6));*/
-				String vin = rs.getString(1);
+				car.setuserName(rs.getString(6));
+			/*	String vin = rs.getString(1);
 				String make = rs.getString(2);
 				String model = rs.getString(3);
 				int year = rs.getInt(4);
 				double price = rs.getDouble(5);
-				String newUserName = rs.getString(6);
+				String newUserName = rs.getString(6); */
 				trace("get cars by user while block");
-				car = new Car(make, model, vin, year, price, newUserName);
+				//car = new Car(make, model, vin, year, price, newUserName);
 				carList.add(car);
 			}
 

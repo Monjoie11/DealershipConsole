@@ -44,6 +44,8 @@ public class Driver {
 	}
 
 	public static void main(String[] args) {
+		
+		 trace("start main method");
 
 		UserDaoPostGres userPo = new UserDaoPostGres();
 
@@ -51,13 +53,21 @@ public class Driver {
 
 		User user = new User("lot", "password", User.AccessLevel.USER, 0);
 
-		Car car = new Car("make6", "model6", "vin6", 2006, 2000.00, "userId5");
+		Car car = new Car(/*"make6", "model6", "vin6", 2006, 2000.00, "userId5"*/);
 
-		Offer offer = new Offer(user.getUserName(), Offer.Status.PENDING, 35000.89, car.getVin(), 0);
+	//	Offer offer = new Offer(user.getUserName(), Offer.Status.PENDING, 35000.89, car.getVin(), 0);
 
-		offerPo.createOffer(offer);
-
+//	    offerPo.createOffer(offer);
+		
+		List<Offer> offerList = offerPo.getAllOffersPending();
+		
+		for(Offer o: offerList) {
+			System.out.println(o.toString());
+		}
+		
 	}
+
+	
 	
 	
 	// System.out.println(offer.toString());
@@ -71,26 +81,26 @@ public class Driver {
 	 * userPo.updateUsertoCustomer("lot");
 	 * 
 	 * 
-	 * trace("start main method");
+	
 	 */
 
 	/*
-	 * List<Car> carList = new ArrayList<Car>();
-	 * 
-	 * 
-	 * 
-	 * CarDaoPostgres carPo = new CarDaoPostgres();
-	 * 
-	 * //carPo.createCar(car);
-	 * 
-	 * //car = carPo.getCarByVin("vin2");
-	 * 
-	 * carList = carPo.getAllCarsByUser("userId5");
-	 * 
-	 * for(Car c: carList) {
-	 * 
-	 * System.out.println(c.toString()); }
-	 */
+	  List<Car> carList = new ArrayList<Car>();
+	  
+	  
+	  
+	  CarDaoPostgres carPo = new CarDaoPostgres();
+	  
+	  //carPo.createCar(car);
+	  
+	  //car = carPo.getCarByVin("vin2");
+	  
+	  carList = carPo.getAllCarsByUser("userId5");
+	  
+	  for(Car c: carList) {
+	  
+	  System.out.println(c.toString()); }*/
+	
 
 	/*
 	 * 

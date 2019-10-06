@@ -4,12 +4,15 @@ import static com.revature.evaluation.utility.LoggerUtil.trace;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.reavture.evaluation.jdbc.ConnectionFactory;
 import com.reavture.evaluation.pojo.Car;
 import com.reavture.evaluation.pojo.Offer;
+import com.reavture.evaluation.pojo.User;
 import com.reavture.evaluation.pojo.Offer.Status;
 
 public class OfferDaoPostGres implements OfferDao {
@@ -25,21 +28,15 @@ public class OfferDaoPostGres implements OfferDao {
 	@Override
 	public void createOffer(Offer offer) {
 
-		String sql = "insert into off (username, status, amount, carvin, offerid) " + "values(?, ?, ?, ?, ?)";
+		String sql = "insert into offer (username, status, amount, carvin) values(?, ?, ?, ?)";
 
 	
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, offer.getUserName());
-			trace("set name");
 			stmt.setString(2, offer.getStatus().toString());
-			trace("set status");
 			stmt.setString(3, Double.toString(offer.getAmount()));
-			trace("set amount");
 			stmt.setString(4, offer.getCarVin());
-			trace("set vin");
-			stmt.setInt(5, offer.getOfferId());
-			trace("set offferid" + offer.toString());
 			stmt.executeUpdate();
 			trace("executing insert offer");
 
@@ -58,15 +55,55 @@ public class OfferDaoPostGres implements OfferDao {
 	}
 
 	@Override
-	public List<Offer> getAllOffers() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public List<Offer> getAllOffersPending() {
+		
+		List<Offer> offerList = new ArrayList<Offer>();
+		
+		Offer offer = new Offer();
+		
+		String sql = "select * from offer where status = 'PENDING'";
+		 
+		PreparedStatement stmt;
+		
+		try {
+			stmt = conn.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
 
+			while (rs.next()) {
+				offer.setUserName(rs.getString(1));
+				offer.setStatus(Offer.Status.valueOf(rs.getString(2)));
+				offer.setAmount(Double.parseDouble(rs.getString(3)));
+				offer.setCarVin(rs.getString(4));
+				offer.setOfferId(rs.getInt(5));
+				trace("get pending offers");
+				offerList.add(offer);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return offerList;
+	}
+		
+	
+	
 	@Override
 	public void acceptOffer(int offerId) {
-		// TODO Auto-generated method stub
-
+		String sql = "update offer set status = ? where offerid = ?";
+		
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, Offer.Status.PENDING.toString());
+			stmt.setString(2, Integer.toString(offerId));
+			stmt.executeUpdate();
+			trace("user to customer while block");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	@Override

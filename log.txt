@@ -70,3 +70,37 @@
 2019-10-06 14:49:24 TRACE root:30 - set amount
 2019-10-06 14:49:24 TRACE root:30 - set vin
 2019-10-06 14:49:24 TRACE root:30 - set offferidOffer [userName=lot, status=PENDING, amount=35000.89, carVin=vin6, offerId=0]
+2019-10-06 15:26:07 TRACE root:30 - set name
+2019-10-06 15:26:07 TRACE root:30 - set status
+2019-10-06 15:26:07 TRACE root:30 - set amount
+2019-10-06 15:26:07 TRACE root:30 - set vin
+2019-10-06 15:26:07 TRACE root:30 - set offferidOffer [userName=lot, status=PENDING, amount=35000.89, carVin=vin6, offerId=0]
+2019-10-06 15:28:06 TRACE root:30 - set name
+2019-10-06 15:28:06 TRACE root:30 - set status
+2019-10-06 15:28:06 TRACE root:30 - set amount
+2019-10-06 15:28:06 TRACE root:30 - set vin
+2019-10-06 15:28:06 TRACE root:30 - set offferidOffer [userName=lot, status=PENDING, amount=35000.89, carVin=vin6, offerId=45]
+2019-10-06 15:30:14 TRACE root:30 - set name
+2019-10-06 15:30:14 TRACE root:30 - set status
+2019-10-06 15:30:14 TRACE root:30 - set amount
+2019-10-06 15:30:14 TRACE root:30 - set vin
+2019-10-06 15:30:14 TRACE root:30 - set offferidOffer [userName=lot, status=PENDING, amount=35000.89, carVin=vin6, offerId=45]
+2019-10-06 15:31:04 TRACE root:30 - set name
+2019-10-06 15:31:04 TRACE root:30 - set status
+2019-10-06 15:31:04 TRACE root:30 - set amount
+2019-10-06 15:31:04 TRACE root:30 - set vin
+2019-10-06 15:31:04 TRACE root:30 - set offferidOffer [userName=lot, status=PENDING, amount=35000.89, carVin=vin6, offerId=45]
+2019-10-06 15:31:04 TRACE root:30 - executing insert offer
+2019-10-06 15:45:10 TRACE root:30 - executing insert offer
+2019-10-06 15:46:30 TRACE root:30 - start main method
+2019-10-06 15:47:22 TRACE root:30 - start main method
+2019-10-06 15:47:56 TRACE root:30 - start main method
+2019-10-06 15:47:57 TRACE root:30 - executing insert offer
+2019-10-06 15:54:26 TRACE root:30 - start main method
+2019-10-06 15:56:14 TRACE root:30 - start main method
+2019-10-06 15:56:15 TRACE root:30 - get cars by user while block
+2019-10-06 15:56:15 TRACE root:30 - get cars by user while block
+2019-10-06 16:20:24 TRACE root:30 - start main method
+2019-10-06 16:20:24 TRACE root:30 - get offers by user while block
+2019-10-06 16:20:24 TRACE root:30 - get offers by user while block
+2019-10-06 16:20:24 TRACE root:30 - get offers by user while block

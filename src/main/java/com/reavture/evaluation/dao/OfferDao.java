@@ -12,7 +12,7 @@ public interface OfferDao {
 	
 	public Offer getOffer(int offerId);
 	
-	public List<Offer> getAllOffers();
+	public List<Offer> getAllOffersPending();
 	
 	public void acceptOffer(int offerId);
 
