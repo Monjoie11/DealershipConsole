@@ -15,6 +15,7 @@ import com.reavture.evaluation.dao.EmployeeDaoSerialization;
 import com.reavture.evaluation.dao.OfferDao;
 import com.reavture.evaluation.dao.OfferDaoSerialization;
 import com.reavture.evaluation.dao.UserDao;
+import com.reavture.evaluation.dao.UserDaoPostGres;
 import com.reavture.evaluation.dao.UserDaoSerialization;
 import com.reavture.evaluation.jdbc.ConnectionFactory;
 import com.reavture.evaluation.pojo.Car;
@@ -47,8 +48,12 @@ public class Driver {
 
 	public static void main(String[] args) {
 		
-		User user = new User("lot", )
+		UserDaoPostGres userPo = new UserDaoPostGres();
+		
+		User user = new User("lot", "password", User.AccessLevel.USER, 0);
 
+		userPo.createUser(user);
+		
 		
 		trace("start main method");
 		

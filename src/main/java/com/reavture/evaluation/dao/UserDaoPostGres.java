@@ -58,7 +58,9 @@ public class UserDaoPostGres implements UserDao {
 			while(rs.next()) {
 				user.setUserName(rs.getString(1));
 				user.setPassword(rs.getString(2));
-				user.setUserId(rs.getInt(1));
+				user.setAccesslevel(User.AccessLevel.valueOf(rs.getString(3)));
+				user.setUserId(rs.getInt(4));
+				trace("get user while block");
 			}
 			
 		} catch (SQLException e) {

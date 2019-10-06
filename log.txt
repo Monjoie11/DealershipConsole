@@ -32,3 +32,10 @@
 2019-10-05 20:11:00 TRACE root:30 - start main method
 2019-10-05 20:11:00 TRACE root:30 - get cars by user while block
 2019-10-05 20:11:00 TRACE root:30 - get cars by user while block
+2019-10-05 23:55:00 TRACE root:30 - start main method
+2019-10-05 23:55:50 TRACE root:30 - start main method
+2019-10-05 23:57:45 TRACE root:30 - executing insert user
+2019-10-05 23:57:45 TRACE root:30 - start main method
+2019-10-06 00:00:28 TRACE root:30 - executing insert user
+2019-10-06 00:00:28 TRACE root:30 - start main method
+2019-10-06 00:00:38 TRACE root:30 - start main method
