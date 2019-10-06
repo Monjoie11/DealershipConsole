@@ -55,24 +55,24 @@ public class Driver {
 		
 	    List<Car> carList = new ArrayList<Car>();
 		
-		Car car = new Car(/* "make5", "model5", "vin5", 2006, 2000.00, "userId5" */);
+		Car car = new Car( "make6", "model6", "vin6", 2006, 2000.00, "userId5" );
 		
 		CarDaoPostgres carPo = new CarDaoPostgres();
 		
 		trace("start main method");
 		
 		
-		//carPo.createCar(car);
+		carPo.createCar(car);
 		
 		//car = carPo.getCarByVin("vin2");
 		
-		carList = carPo.getAllCarsByUser("userId5");
+		//carList = carPo.getAllCarsByUser("userId5");
 		
-		for(Car c: carList) {
+		//for(Car c: carList) {
 		
-		System.out.println(car.toString());
+		//System.out.println(c.toString());
 
-		}
+		
 
 
 
