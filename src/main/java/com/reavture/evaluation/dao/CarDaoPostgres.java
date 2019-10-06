@@ -13,7 +13,7 @@ import com.reavture.evaluation.pojo.User;
 
 public class CarDaoPostgres implements CarDao {
 
-	Car car = new Car("make2", "model2", "vin2", 2006, 2000.00, "userId2");
+	Car car = new Car();
 
 	private Connection conn = ConnectionFactory.getConnection();
 
@@ -23,10 +23,10 @@ public class CarDaoPostgres implements CarDao {
 
 	@Override
 	public void createCar(Car car) {
-		//TODO create some logic to set null userid to "lot" 
+		//TODO create some logic to set null userName to "lot" 
 		String id = null;
 
-		String sql = "insert into car (vin, make, model, year, price, userid) " + "values(?, ?, ?, ?, ?, ?)";
+		String sql = "insert into car (vin, make, model, year, price, userName) " + "values(?, ?, ?, ?, ?, ?)";
 
 	
 		try {
@@ -36,7 +36,7 @@ public class CarDaoPostgres implements CarDao {
 			stmt.setString(3, car.getModel());
 			stmt.setString(4, Integer.toString(car.getYear()));
 			stmt.setString(5, Double.toString(car.getPrice()));
-			stmt.setString(6, car.getUserId());
+			stmt.setString(6, car.getuserName());
 			stmt.executeUpdate();
 			trace("executing insert car");
 
@@ -67,7 +67,7 @@ public class CarDaoPostgres implements CarDao {
 				car.setMake(rs.getString(3));
 				car.setYear(rs.getInt(4));
 				car.setPrice(rs.getDouble(5));
-				car.setUserId(rs.getString(6));
+				car.setuserName(rs.getString(6));
 				trace("get car by vin while loop");
 			}
 
@@ -82,12 +82,12 @@ public class CarDaoPostgres implements CarDao {
 	
 	public void updateCarSold(Car car, User user) {
 			
-			String sql = "update car set userid = ? where vin = ?";
+			String sql = "update car set username = ? where vin = ?";
 			
 			
 			try {
 				PreparedStatement stmt = conn.prepareStatement(sql);
-				stmt.setString(1, user.getUserId());
+				stmt.setString(1, user.getUserName());
 				stmt.setString(2, car.getVin());
 				stmt.executeUpdate();
 				trace("execute update car sold");
@@ -100,20 +100,20 @@ public class CarDaoPostgres implements CarDao {
 	
 
 	@Override
-	public List<Car> getAllCarsByUser(String userId) {
+	public List<Car> getAllCarsByUser(String userName) {
 		//to see all cars search by *; to see cars on lot search by lot
 		
 		List<Car> carList = new ArrayList<Car>();
 		
 		Car car = new Car();
 		
-		String sql = "select * from car where userid = ?";
+		String sql = "select * from car where username = ?";
 		 
 		PreparedStatement stmt;
 		
 		try {
 			stmt = conn.prepareStatement(sql);
-			stmt.setString(1, userId);
+			stmt.setString(1, userName);
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
@@ -122,15 +122,15 @@ public class CarDaoPostgres implements CarDao {
 				car.setMake(rs.getString(3));
 				car.setYear(rs.getInt(4));
 				car.setPrice(rs.getDouble(5));
-				car.setUserId(rs.getString(6));*/
+				car.setuserName(rs.getString(6));*/
 				String vin = rs.getString(1);
 				String make = rs.getString(2);
 				String model = rs.getString(3);
 				int year = rs.getInt(4);
 				double price = rs.getDouble(5);
-				String newUserId = rs.getString(6);
+				String newUserName = rs.getString(6);
 				trace("get cars by user while block");
-				car = new Car(make, model, vin, year, price, userId);
+				car = new Car(make, model, vin, year, price, newUserName);
 				carList.add(car);
 			}
 

@@ -11,10 +11,10 @@ public class User implements Serializable{
 
 	private AccessLevel accesslevel;
 	
-	private String userId;
+	private int userId;
 
 	
-    public User(String userName, String password, AccessLevel accesslevel, String userId) {
+    public User(String userName, String password, AccessLevel accesslevel, int userId) {
 		super();
 		this.userName = userName;
 		this.password = password;
@@ -60,16 +60,15 @@ public class User implements Serializable{
 	}
 
 
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
 
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
-	
 
 
 	@Override
@@ -77,12 +76,11 @@ public class User implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((accesslevel == null) ? 0 : accesslevel.hashCode());
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + userId;
 		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
 		return result;
 	}
-	
-	
 
 
 	@Override
@@ -96,10 +94,12 @@ public class User implements Serializable{
 		User other = (User) obj;
 		if (accesslevel != other.accesslevel)
 			return false;
-		if (userId == null) {
-			if (other.userId != null)
+		if (password == null) {
+			if (other.password != null)
 				return false;
-		} else if (!userId.equals(other.userId))
+		} else if (!password.equals(other.password))
+			return false;
+		if (userId != other.userId)
 			return false;
 		if (userName == null) {
 			if (other.userName != null)
@@ -110,20 +110,20 @@ public class User implements Serializable{
 	}
 
 
-
-	public static enum AccessLevel{
-	  EMPLOYEE, USER, SYSTEM, CUSTOMER;
-	}
-
-
+	
 
 	@Override
 	public String toString() {
-		return "UUser [userName=" + userName + ", password=" + password + ", accesslevel=" + accesslevel + ", userId="
+		return "User [userName=" + userName + ", password=" + password + ", accesslevel=" + accesslevel + ", userId="
 				+ userId + "]";
 	}
 
 	
+	
+
+	public static enum AccessLevel{
+	  EMPLOYEE, USER, CUSTOMER;
+	}
 
 	
 

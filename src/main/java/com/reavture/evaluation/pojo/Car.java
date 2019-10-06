@@ -14,21 +14,21 @@ public class Car implements Serializable{
 	
 	private double price;
 	
-	private String userId;
+	private String userName;
 
 	public Car() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Car(String make, String model, String vin, int year, double price, String userId) {
+	public Car(String make, String model, String vin, int year, double price, String userName) {
 		super();
 		this.make = make;
 		this.model = model;
 		this.vin = vin;
 		this.year = year;
 		this.price = price;
-		this.userId = userId;
+		this.userName = userName;
 	}
 
 	public String getMake() {
@@ -71,19 +71,19 @@ public class Car implements Serializable{
 		this.price = price;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getuserName() {
+		return userName;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setuserName(String userName) {
+		this.userName = userName;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
 		result = prime * result + ((make == null) ? 0 : make.hashCode());
 		result = prime * result + ((model == null) ? 0 : model.hashCode());
 		long temp;
@@ -103,10 +103,10 @@ public class Car implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Car other = (Car) obj;
-		if (userId == null) {
-			if (other.userId != null)
+		if (userName == null) {
+			if (other.userName != null)
 				return false;
-		} else if (!userId.equals(other.userId))
+		} else if (!userName.equals(other.userName))
 			return false;
 		if (make == null) {
 			if (other.make != null)
@@ -133,7 +133,7 @@ public class Car implements Serializable{
 	@Override
 	public String toString() {
 		return "Car [make=" + make + ", model=" + model + ", vin=" + vin + ", year=" + year + ", price=" + price
-				+ ", userId=" + userId + "]";
+				+ ", userName=" + userName + "]";
 	} 
 	
 	

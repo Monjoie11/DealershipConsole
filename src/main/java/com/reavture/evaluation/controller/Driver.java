@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 import com.reavture.evaluation.dao.CarDao;
 import com.reavture.evaluation.dao.CarDaoPostgres;
-import com.reavture.evaluation.dao.CarDaoSerialization;
 import com.reavture.evaluation.dao.CustomerDao;
 import com.reavture.evaluation.dao.CustomerDaoSerialization;
 import com.reavture.evaluation.dao.EmployeeDao;
@@ -34,45 +33,44 @@ import com.reavture.evaluation.ui.SecondScreenUi;
 import static com.revature.evaluation.utility.LoggerUtil.*;
 
 public class Driver {
-	
-	
 
-	
-
-	
 	private static UserDao userDao = new UserDaoSerialization();
 	private static EmployeeDao employeeDao = new EmployeeDaoSerialization();
 	private static CustomerDao customerDao = new CustomerDaoSerialization();
 	private static OfferDao offerDao = new OfferDaoSerialization();
-	
+
 	private static Connection conn = ConnectionFactory.getConnection();
-	
+
 	public void setConn(Connection conn) {
 		this.conn = conn;
 	}
 
 	public static void main(String[] args) {
 		
+		User user = new User("lot", )
+
+		
+		trace("start main method");
+		
+		
+		/*
 	    List<Car> carList = new ArrayList<Car>();
 		
 		Car car = new Car( "make6", "model6", "vin6", 2006, 2000.00, "userId5" );
 		
 		CarDaoPostgres carPo = new CarDaoPostgres();
 		
-		trace("start main method");
-		
-		
-		carPo.createCar(car);
+		//carPo.createCar(car);
 		
 		//car = carPo.getCarByVin("vin2");
 		
-		//carList = carPo.getAllCarsByUser("userId5");
+		carList = carPo.getAllCarsByUser("userId5");
 		
-		//for(Car c: carList) {
+		for(Car c: carList) {
 		
-		//System.out.println(c.toString());
-
-		
+		System.out.println(c.toString());
+		}
+		*/
 
 
 
