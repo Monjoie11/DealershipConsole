@@ -119,3 +119,4 @@
 2019-10-06 19:11:33 TRACE root:30 - executing reject competing
 2019-10-06 19:14:10 TRACE root:30 - start main method
 2019-10-06 19:14:11 TRACE root:30 - executing reject competing
+2019-10-07 12:16:04 TRACE root:30 - start main method
