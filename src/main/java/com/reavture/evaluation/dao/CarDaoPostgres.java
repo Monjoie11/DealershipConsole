@@ -44,6 +44,8 @@ public class CarDaoPostgres implements CarDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		System.out.println(car.toString());
 
 	}
 
@@ -80,15 +82,15 @@ public class CarDaoPostgres implements CarDao {
 
 	}
 	
-	public void updateCarSold(Car car, User user) {
+	public void updateCarSold(String vin, String userName) {
 			
 			String sql = "update car set username = ? where vin = ?";
 			
 			
 			try {
 				PreparedStatement stmt = conn.prepareStatement(sql);
-				stmt.setString(1, user.getUserName());
-				stmt.setString(2, car.getVin());
+				stmt.setString(1, userName);
+				stmt.setString(2, vin);
 				stmt.executeUpdate();
 				trace("execute update car sold");
 			} catch (SQLException e) {

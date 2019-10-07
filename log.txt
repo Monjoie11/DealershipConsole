@@ -121,3 +121,5 @@
 2019-10-06 19:14:11 TRACE root:30 - executing reject competing
 2019-10-07 12:16:04 TRACE root:30 - start main method
 2019-10-07 14:24:03 TRACE root:30 - start main method
+2019-10-07 16:02:36 TRACE root:30 - start main method
+2019-10-07 16:03:22 TRACE root:30 - get user while block

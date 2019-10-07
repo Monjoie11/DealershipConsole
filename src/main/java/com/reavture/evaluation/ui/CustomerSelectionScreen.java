@@ -13,7 +13,6 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 import com.reavture.evaluation.dao.CarDaoPostgres;
-import com.reavture.evaluation.dao.PaymentDaoSerialization;
 import com.reavture.evaluation.pojo.Car;
 import com.reavture.evaluation.pojo.Customer;
 import com.reavture.evaluation.pojo.Offer;
@@ -93,52 +92,6 @@ public class CustomerSelectionScreen {
 	
 
 	
-	public List<Payment> findMyPayments(Customer customer){
-		List<File> paymentList = new ArrayList<File>();
-		
-		List<Payment> customerPayments = new ArrayList<Payment>(); 
-		
-		Payment payment = null;
-		
-		PaymentDaoSerialization serialPayment = new PaymentDaoSerialization();
-		
-		try {
-			paymentList = Files.walk(Paths.get("./database/payments"))
-			.filter(Files::isRegularFile)
-			.map(Path::toFile)
-			.collect(Collectors.toList());
-		} catch (IOException e) {
-			System.out.println("Our path is wrong. We have deviated from the path.");
-			e.printStackTrace();
-		}
-		
-		
-		for(File fileName: paymentList) {
-			
-			try (FileInputStream fis = new FileInputStream(fileName);
-					ObjectInputStream ois = new ObjectInputStream(fis);) {
-				payment = (Payment) ois.readObject();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		
-			try {
-				if(customer.equals(payment.getCustomer())) {
-				customerPayments.add(payment);	
-				System.out.println(payment.getCustomer().toString() + " " + payment.getCar().toString() + " " + Double.toString(payment.getAmount()) + " " + payment.getPaymentId());
-				}
-			} catch (NullPointerException e) {
-				System.out.println("looks like we need to fire the data entry guy");
-				e.printStackTrace();
-			}
-			
-		}
-		
-		return customerPayments;
-	}
+
 
 }

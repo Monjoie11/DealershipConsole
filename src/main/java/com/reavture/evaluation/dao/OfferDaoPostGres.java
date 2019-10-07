@@ -52,9 +52,37 @@ public class OfferDaoPostGres implements OfferDao {
 
 	@Override
 	public Offer getOffer(int offerId) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select * from user_table where username = ?";
+		
+		PreparedStatement stmt;
+		
+		Offer offer = new Offer();
+		
+		
+		
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, offerId);
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				offer.setUserName(rs.getString(1));
+				offer.setStatus(Offer.Status.valueOf(rs.getString(2)));
+				offer.setAmount(rs.getDouble(3));
+				offer.setCarVin(rs.getString(4));
+				trace("get offer while block");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return offer;
+		
 	}
+	
 
 	@Override
 	public List<Offer> getAllOffersPending() {
@@ -89,6 +117,38 @@ public class OfferDaoPostGres implements OfferDao {
 		return offerList;
 	}
 		
+	
+public List<Offer> getAllOffersAccepted() {
+		
+		List<Offer> offerList = new ArrayList<Offer>();
+		
+		Offer offer = new Offer();
+		
+		String sql = "select * from offer where status = 'ACCEPTED'";
+		 
+		PreparedStatement stmt;
+		
+		try {
+			stmt = conn.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				offer.setUserName(rs.getString(1));
+				offer.setStatus(Offer.Status.valueOf(rs.getString(2)));
+				offer.setAmount(Double.parseDouble(rs.getString(3)));
+				offer.setCarVin(rs.getString(4));
+				offer.setOfferId(rs.getInt(5));
+				trace("get pending offers while");
+				offerList.add(offer);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return offerList;
+	}
 	
 	
 	@Override

@@ -9,9 +9,7 @@ import java.util.Scanner;
 import com.reavture.evaluation.dao.CarDao;
 import com.reavture.evaluation.dao.CarDaoPostgres;
 import com.reavture.evaluation.dao.CustomerDao;
-import com.reavture.evaluation.dao.CustomerDaoSerialization;
 import com.reavture.evaluation.dao.EmployeeDao;
-import com.reavture.evaluation.dao.EmployeeDaoSerialization;
 import com.reavture.evaluation.dao.OfferDao;
 import com.reavture.evaluation.dao.OfferDaoPostGres;
 import com.reavture.evaluation.dao.UserDao;
@@ -112,13 +110,22 @@ public class Driver {
 		String customerSelection = null;
 
 		String employeeSelection = null;
+		
+		String vin = null;
+		
+		String userName= null;
 
 		LoginUi login = new LoginUi();
 		
 		User user = null;
 		
+		int offerId = 0;
+		
 		Offer offer = null;
+		
+		Car car = null;
 
+		List<Offer> offerList = null;
 
 		EmployeeSelectionScreen ess = new EmployeeSelectionScreen();
 
@@ -128,7 +135,7 @@ public class Driver {
 
 		CustomerSelectionScreen css = new CustomerSelectionScreen();
 
-		FindObjectInFolder findObject = new FindObjectInFolder();
+
 
 		while (notLogin) {
 
@@ -215,16 +222,37 @@ public class Driver {
 
 			switch (employeeSelection) {
 			case "addCar":
-				ess.addCarToLot();
+				car = ess.addCarToLot();
+				carPo.createCar(car);
 				break;
 			case "seeOffers":
-				ess.seeOffers();
+				offerList = offerPo.getAllOffersPending();
+				for(Offer o: offerList) {
+					System.out.println(o.toString());
+				}
 				break;
 			case "acceptOffer":
-				ess.acceptAnOffer();
+				offerList = offerPo.getAllOffersPending();
+				for(Offer o: offerList) {
+					System.out.println(o.toString());
+				}
+				offerId = ess.acceptAnOffer();
+				offerPo.acceptOffer(offerId);
+				offer = offerPo.getOffer(offerId);
+				offerPo.rejectCompetingOffers(offer.getCarVin());
 				break;
 			case "finalize":
-				ess.finalizeSale();
+				offerList = offerPo.getAllOffersAccepted();
+				for(Offer o: offerList) {
+					System.out.println(o.toString());
+				}
+				offerId = ess.finalizeAnOffer();
+				offer = offerPo.getOffer(offerId);
+				vin = offer.getCarVin();
+				userName = offer.getUserName();
+				ess.finalizeSale(offer);
+				carPo.updateCarSold(vin, userName);
+				car = carPo.getCarByVin(vin);
 				break;
 			case "exit":
 				System.exit(0);

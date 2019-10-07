@@ -12,10 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import com.reavture.evaluation.dao.CarDaoSerialization;
-import com.reavture.evaluation.dao.CustomerDaoSerialization;
-import com.reavture.evaluation.dao.OfferDaoSerialization;
-import com.reavture.evaluation.dao.PaymentDaoSerialization;
+import com.reavture.evaluation.dao.OfferDaoPostGres;
 import com.reavture.evaluation.pojo.Car;
 import com.reavture.evaluation.pojo.Customer;
 import com.reavture.evaluation.pojo.Offer;
@@ -39,21 +36,18 @@ public class EmployeeSelectionScreen {
 	
 	String vin = null;
 	
-	String offerId = null;
+	int offerId = 0;
 	
-	List<File> offerList = new ArrayList<File>();
+	List<Offer> offerList = new ArrayList<Offer>();
 	
 	List<File> modifiedOffers = new ArrayList<File>(); 
 	
 	Payment payment = null;
 	
-	CustomerDaoSerialization serialCustomer = new CustomerDaoSerialization();
+	OfferDaoPostGres offerPo = new OfferDaoPostGres();
+
 	
-	CarDaoSerialization serialCar = new CarDaoSerialization();
-	
-	PaymentDaoSerialization serialPayment = new PaymentDaoSerialization();
-	
-	OfferDaoSerialization serialOffer = new OfferDaoSerialization();
+
 	
 	public String employeeMenu() {
 		
@@ -81,124 +75,31 @@ public class EmployeeSelectionScreen {
 	
 	
 	
-	public List<File> seeOffers(){
+	public int acceptAnOffer(){
+
 		
-		Offer offer = null;
+		System.out.println("enter the offerId of the offer you'd like to accept");
 		
-		List<File> offerList = new ArrayList<File>();
-		
-		List<File> pendingOffers = new ArrayList<File>(); 
-		
-		Payment payment = null;
-		
-		PaymentDaoSerialization serialPayment = new PaymentDaoSerialization();
-		
-		try {
-			offerList = Files.walk(Paths.get("./database/offers"))
-			.filter(Files::isRegularFile)
-			.map(Path::toFile)
-			.collect(Collectors.toList());
-		} catch (IOException e) {
-			System.out.println("Our path is wrong. We have deviated from the path.");
-			e.printStackTrace();
-		}
+		offerId = Integer.parseInt(keyboard.nextLine());
 		
 		
-		for(File fileName: offerList) {
-			
-			try (FileInputStream fis = new FileInputStream(fileName);
-					ObjectInputStream ois = new ObjectInputStream(fis);) {
-				offer = (Offer) ois.readObject();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		return offerId;
+	}
+	
+	public int finalizeAnOffer(){
+
 		
-			try {
-				if(Offer.Status.PENDING == offer.getStatus()) {
-				pendingOffers.add(fileName);	
-				System.out.println(offer.getOfferId() + " " + Double.toString(offer.getAmount()) + " " + offer.getCar().getVin() + " " + offer.getCustomer().getCustomerId());
-				}
-			} catch (NullPointerException e) {
-				System.out.println("looks like we need to fire the data entry guy");
-				e.printStackTrace();
-			}
-			
-		}
+		System.out.println("enter the offerId of the offer you'd like to finalize.");
 		
-		return pendingOffers;
+		offerId = Integer.parseInt(keyboard.nextLine());
+		
+	
+		
+		return offerId;
 	}
 	
 	
-	public List<File> acceptAnOffer(){
-
-		
-		offerList = this.seeOffers();
-		
-		System.out.println("enter the offerId of the offer you'd like to accept. enter help to bail out");
-		
-		offerId = keyboard.nextLine();
-		
-		if("help".equals(offerId)) {
-		//code to go back
-		}
-			
-		
-		for(File fileName: offerList) {
-			
-			try (FileInputStream fis = new FileInputStream(fileName);
-					ObjectInputStream ois = new ObjectInputStream(fis);) {
-				offer = (Offer) ois.readObject();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-		    if(offerId.equals(offer.getOfferId())) {
-		    	offer.setStatus(Offer.Status.ACCEPTED);
-		    	vin = offer.getCar().getVin();
-		    	serialOffer.createOffer(offer);
-		    	System.out.println(offer.toString());
-		    } 
-		   
-		}
-		
-		for(File fileName: offerList) {
-			
-			try (FileInputStream fis = new FileInputStream(fileName);
-					ObjectInputStream ois = new ObjectInputStream(fis);) {
-				offer = (Offer) ois.readObject();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-		    if(offer.getStatus().equals(Offer.Status.PENDING) & vin.equals(offer.getCar().getVin())) {
-		    	offer.setStatus(Offer.Status.REJECTED);
-		    	serialOffer.createOffer(offer);
-		    	System.out.print(offer.toString());
-		    } 
-		}
-			
-			
-		
-		
-
-		
-		return modifiedOffers;
-	}
-	
-	
-	public String addCarToLot() {
+	public Car addCarToLot() {
 		
 		System.out.println("So you want to add a car to the lot? What's its vin");
 		
@@ -208,11 +109,11 @@ public class EmployeeSelectionScreen {
 		
 		make = keyboard.nextLine();
 		
-		System.out.println("What's the model?");
+		System.out.println("Which model?");
 		
 		model = keyboard.nextLine();
 		
-		System.out.println("What's ts model year?");
+		System.out.println("model year?");
 		
 		year = Integer.parseInt(keyboard.nextLine());
 		
@@ -220,67 +121,15 @@ public class EmployeeSelectionScreen {
 		
 		price = Double.parseDouble(keyboard.nextLine());
 		
-		car = new Car(make, model, year, price, vin, null);
+		car = new Car(vin, make, model, year, price, "lot");
 		
-		String filePath = serialCar.createCar(car);
-		
-		System.out.println(car.toString() + filePath);
-		
-		return filePath;
+		return car;
 		
 	}
 	
 	
-	public float finalizeSale() {
+	public float finalizeSale(Offer offer) {
 		
-		List<File> acceptedOffers = new ArrayList<File>();
-		
-		
-		try {
-			offerList = Files.walk(Paths.get("./database/offers"))
-			.filter(Files::isRegularFile)
-			.map(Path::toFile)
-			.collect(Collectors.toList());
-		} catch (IOException e) {
-			System.out.println("Our path is wrong. We have deviated from the path.");
-			e.printStackTrace();
-		}
-		
-		
-		for(File fileName: offerList) {
-			
-			try (FileInputStream fis = new FileInputStream(fileName);
-					ObjectInputStream ois = new ObjectInputStream(fis);) {
-				offer = (Offer) ois.readObject();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		
-			try {
-				if(Offer.Status.ACCEPTED == offer.getStatus()) {
-				acceptedOffers.add(fileName);	
-				System.out.println(offer.getOfferId() + " " + Double.toString(offer.getAmount()) + " " + offer.getCar().getVin() + " " + offer.getCustomer().getCustomerId());
-				}
-			} catch (NullPointerException e) {
-				System.out.println("looks like we need to fire the data entry guy");
-				e.printStackTrace();
-			}
-		
-		}
-	
-		System.out.println("enter the offerId of the accepted offer you'd like to finalize");
-		
-		offerId = keyboard.nextLine();
-		
-		offer = serialOffer.readOffer(offerId);
-		
-		Customer customer = offer.getCustomer();
-		
-		Car car = offer.getCar();
 		
 		System.out.println("enter the term of the loan in months. enter 0 if the customer is paying cash (which would make"
 				+ "us very sad because our business model depends on getting interest on depreciating assets.");
@@ -292,19 +141,6 @@ public class EmployeeSelectionScreen {
 		System.out.println("thank you. You're monthly payment will be: " +
 		Double.toString(payment) + " Remember that we know where you live.");
 		
-		customer.setPaymentAmount(payment);
-		
-		customer.setPaymentsRemaining((int) months);
-		
-		serialCustomer.createCustomer(customer);
-		
-		System.out.println(customer.toString());
-		
-		car.setCustomer(customer);
-		
-		serialCar.createCar(car);
-		
-		System.out.println(car.toString());
 		
 		return payment;
 	}
