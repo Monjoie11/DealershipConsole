@@ -44,6 +44,8 @@ public class OfferDaoPostGres implements OfferDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		System.out.println(offer.toString());
 
 	}
 
@@ -122,6 +124,47 @@ public class OfferDaoPostGres implements OfferDao {
 		}
 		
 	}
+	
+	
+	/*
+	 * 
+	 * this needs to be made a view payments in the payment dao
+
+	public List<Offer> getAllOffersByUser(String userName) {
+		
+		List<Offer> offerList = new ArrayList<Offer>();
+		
+		Offer offer = new Offer();
+		
+		String sql = "select * from offer where username = ?";
+		 
+		PreparedStatement stmt;
+		
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, userName);
+			ResultSet rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				offer.setUserName(rs.getString(1));
+				offer.setStatus(Offer.Status.valueOf(rs.getString(2)));
+				offer.setAmount(Double.parseDouble(rs.getString(3)));
+				offer.setCarVin(rs.getString(4));
+				offer.setOfferId(rs.getInt(5));
+				trace("get pending offers while");
+				offerList.add(offer);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return offerList;
+	}
+	
+	*/
+	
 
 	@Override
 	public void deleteOffer(int offerId) {

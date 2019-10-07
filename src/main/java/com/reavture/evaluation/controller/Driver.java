@@ -107,19 +107,20 @@ public class Driver {
 
 		boolean notLogin = true;
 
-		List<File> carList = null;
+		List<Car> carList = null;
 
 		String customerSelection = null;
 
 		String employeeSelection = null;
 
 		LoginUi login = new LoginUi();
+		
+		User user = null;
+		
+		Offer offer = null;
 
-		Customer customer = null;
 
-		Employee employee = null;
-
-		// EmployeeSelectionScreen ess = new EmployeeSelectionScreen();
+		EmployeeSelectionScreen ess = new EmployeeSelectionScreen();
 
 		SecondScreenUi secondScreen = new SecondScreenUi();
 
@@ -131,7 +132,7 @@ public class Driver {
 
 		while (notLogin) {
 
-			User user = login.userLogin();
+		    user = login.userLogin();
 
 			String selection = secondScreen.pickType();
 
@@ -157,24 +158,19 @@ public class Driver {
 			case "employee":
 				if (user.getAccesslevel().equals(User.AccessLevel.EMPLOYEE)) {
 
-					System.out.println("Hello " + customer.getFirstName() + " " + customer.getLastName() + " "
-							+ "what can i do for you?");
+					System.out.println("Hello " + user.getUserName() + " " + "what can i do for you?");
 
-					isCustomer = true;
+					isEmployee = true;
 					notLogin = false;
 					break;
 					
-				} catch (Exception e) {
+				} else {
 					System.out.println("It does not appear that you have an employee account.");
 					System.out.println("Employee accounts must be created by HR or Managment");
-
-					e.printStackTrace();
+					System.out.println("System access closing.");
+				    System.exit(0);
 				}
-				System.out.println("Hello " + employee.getFirstName() + " " + employee.getLastName() + " "
-						+ "what can i do for you?");
-				isEmployee = true;
-				notLogin = false;
-				break;
+		
 			default:
 				System.out.println("if you're reading this, something has gone terribly wrong here");
 			}
@@ -185,18 +181,24 @@ public class Driver {
 			customerSelection = css.customerMenu();
 			switch (customerSelection) {
 			case "viewLot":
-				carList = findObject.getAllCars();
-				css.viewCarLot(carList);
+				carList = carPo.getAllCarsByUser("lot");
+				for(Car c: carList) {
+					System.out.println(c.getMake() + " " + c.getModel() + " " + c.getYear() + " " + c.getPrice() + " " + c.getVin());
+				}
 				break;
 			case "makeOffer":
-				carList = findObject.getAllCars();
-				css.makeAnOffer(carList, customer);
+				carList = carPo.getAllCarsByUser("lot");
+				offer = css.makeAnOffer(user, carList);
+				offerPo.createOffer(offer);
 				break;
 			case "viewMine":
-				css.findMyCars(customer);
+				carList = carPo.getAllCarsByUser(user.getUserName());
+				for(Car c: carList) {
+					System.out.println(c.getMake() + " " + c.getModel() + " " + c.getYear() + " " + c.getPrice() + " " + c.getVin());
+				}
 				break;
 			case "viewPayments":
-				css.findMyPayments(customer);
+				//this may be a dead path
 				break;
 			case "exit":
 				System.exit(0);

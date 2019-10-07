@@ -21,7 +21,7 @@ public class UserDaoPostGres implements UserDao {
 	@Override
 	public void createUser(User user) {
 		//TODO create some logic to set null userid to "lot" 
-		String id = null;
+
 
 		String sql = "insert into user_table (username, password, accesslevel) " + "values(?, ?, ?)";
 
