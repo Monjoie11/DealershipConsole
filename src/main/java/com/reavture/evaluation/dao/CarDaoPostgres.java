@@ -26,7 +26,7 @@ public class CarDaoPostgres implements CarDao {
 		//TODO create some logic to set null userName to "lot" 
 		String id = null;
 
-		String sql = "insert into car (vin, make, model, year, price, username) " + "values(?, ?, ?, ?, ?, ?)";
+		String sql = "insert into car (vin, make, model, year, price, username) values(?, ?, ?, ?, ?, ?)";
 
 	
 		try {

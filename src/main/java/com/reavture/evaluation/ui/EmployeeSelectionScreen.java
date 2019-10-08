@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 
 import com.reavture.evaluation.dao.OfferDaoPostGres;
 import com.reavture.evaluation.pojo.Car;
-import com.reavture.evaluation.pojo.Customer;
 import com.reavture.evaluation.pojo.Offer;
 import com.reavture.evaluation.pojo.Payment;
 

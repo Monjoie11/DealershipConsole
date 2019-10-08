@@ -4,41 +4,33 @@ import java.io.Serializable;
 
 public class Payment implements Serializable{
 	
-	private Customer customer;
+	private String userName;
 	
-	private Car car;
+	private String vin;
 	
 	private Double amount;
 	
-	private String paymentId;
+	private int paymentId;
 
 	public Payment() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Payment(Customer customer, Car car, Double amount, String paymentId) {
-		super();
-		this.customer = customer;
-		this.car = car;
-		this.amount = amount;
-		this.paymentId = paymentId;
+	public String getUserName() {
+		return userName;
 	}
 
-	public Customer getCustomer() {
-		return customer;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public String getVin() {
+		return vin;
 	}
 
-	public Car getCar() {
-		return car;
-	}
-
-	public void setCar(Car car) {
-		this.car = car;
+	public void setVin(String vin) {
+		this.vin = vin;
 	}
 
 	public Double getAmount() {
@@ -49,11 +41,11 @@ public class Payment implements Serializable{
 		this.amount = amount;
 	}
 
-	public String getPaymentId() {
+	public int getPaymentId() {
 		return paymentId;
 	}
 
-	public void setPaymentId(String paymentId) {
+	public void setPaymentId(int paymentId) {
 		this.paymentId = paymentId;
 	}
 
@@ -62,9 +54,9 @@ public class Payment implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((amount == null) ? 0 : amount.hashCode());
-		result = prime * result + ((car == null) ? 0 : car.hashCode());
-		result = prime * result + ((customer == null) ? 0 : customer.hashCode());
-		result = prime * result + ((paymentId == null) ? 0 : paymentId.hashCode());
+		result = prime * result + paymentId;
+		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
+		result = prime * result + ((vin == null) ? 0 : vin.hashCode());
 		return result;
 	}
 
@@ -82,29 +74,27 @@ public class Payment implements Serializable{
 				return false;
 		} else if (!amount.equals(other.amount))
 			return false;
-		if (car == null) {
-			if (other.car != null)
-				return false;
-		} else if (!car.equals(other.car))
+		if (paymentId != other.paymentId)
 			return false;
-		if (customer == null) {
-			if (other.customer != null)
+		if (userName == null) {
+			if (other.userName != null)
 				return false;
-		} else if (!customer.equals(other.customer))
+		} else if (!userName.equals(other.userName))
 			return false;
-		if (paymentId == null) {
-			if (other.paymentId != null)
+		if (vin == null) {
+			if (other.vin != null)
 				return false;
-		} else if (!paymentId.equals(other.paymentId))
+		} else if (!vin.equals(other.vin))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Payment [customer=" + customer + ", car=" + car + ", amount=" + amount + ", paymentId=" + paymentId
+		return "Payment [userName=" + userName + ", vin=" + vin + ", amount=" + amount + ", paymentId=" + paymentId
 				+ "]";
 	}
+
 	
 	
 

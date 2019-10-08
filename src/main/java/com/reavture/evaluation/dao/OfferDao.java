@@ -2,7 +2,6 @@ package com.reavture.evaluation.dao;
 
 import java.util.List;
 
-import com.reavture.evaluation.pojo.Employee;
 import com.reavture.evaluation.pojo.Offer;
 import com.reavture.evaluation.pojo.User;
 

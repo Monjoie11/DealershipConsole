@@ -8,18 +8,13 @@ import java.util.Scanner;
 
 import com.reavture.evaluation.dao.CarDao;
 import com.reavture.evaluation.dao.CarDaoPostgres;
-import com.reavture.evaluation.dao.CustomerDao;
-import com.reavture.evaluation.dao.EmployeeDao;
 import com.reavture.evaluation.dao.OfferDao;
 import com.reavture.evaluation.dao.OfferDaoPostGres;
 import com.reavture.evaluation.dao.UserDao;
 import com.reavture.evaluation.dao.UserDaoPostGres;
 import com.reavture.evaluation.jdbc.ConnectionFactory;
 import com.reavture.evaluation.pojo.Car;
-import com.reavture.evaluation.pojo.Customer;
-import com.reavture.evaluation.pojo.Employee;
 import com.reavture.evaluation.pojo.User;
-import com.reavture.evaluation.pojo.Employee.Department;
 import com.reavture.evaluation.pojo.Offer;
 import com.reavture.evaluation.pojo.Offer.Status;
 import com.reavture.evaluation.pojo.User.AccessLevel;

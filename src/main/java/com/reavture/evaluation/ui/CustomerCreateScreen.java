@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import com.reavture.evaluation.dao.UserDaoPostGres;
 import com.reavture.evaluation.pojo.Car;
-import com.reavture.evaluation.pojo.Customer;
 import com.reavture.evaluation.pojo.Offer;
 import com.reavture.evaluation.pojo.User;
 import com.reavture.evaluation.pojo.User.AccessLevel;
