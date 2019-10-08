@@ -123,3 +123,4 @@
 2019-10-07 14:24:03 TRACE root:30 - start main method
 2019-10-07 16:02:36 TRACE root:30 - start main method
 2019-10-07 16:03:22 TRACE root:30 - get user while block
+2019-10-08 08:26:48 TRACE root:30 - executing insert car

@@ -12,13 +12,16 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.Spy;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import com.reavture.evaluation.jdbc.ConnectionFactory;
 import com.reavture.evaluation.pojo.Car;
 
+@RunWith(MockitoJUnitRunner.class)
 public class CarDaoPostgresTest {
 	
 	private CarDaoPostgres carDao;
@@ -53,7 +56,7 @@ public class CarDaoPostgresTest {
 		car = new Car();
 		car.setMake("honda");
 		car.setModel("accord");
-		car.setVin("11233");
+		car.setVin("112363");
 		car.setYear(2006);
 		car.setPrice(2000.00);
 		car.setuserName("userName5");
