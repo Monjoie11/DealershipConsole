@@ -53,7 +53,7 @@ public class CarDaoPostgresTest {
 		car = new Car();
 		car.setMake("honda");
 		car.setModel("accord");
-		car.setVin("112233");
+		car.setVin("11233");
 		car.setYear(2006);
 		car.setPrice(2000.00);
 		car.setuserName("userName5");

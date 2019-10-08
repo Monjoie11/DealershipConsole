@@ -10,6 +10,7 @@ import com.reavture.evaluation.dao.CarDao;
 import com.reavture.evaluation.dao.CarDaoPostgres;
 import com.reavture.evaluation.dao.OfferDao;
 import com.reavture.evaluation.dao.OfferDaoPostGres;
+import com.reavture.evaluation.dao.PaymentDaoPostgres;
 import com.reavture.evaluation.dao.UserDao;
 import com.reavture.evaluation.dao.UserDaoPostGres;
 import com.reavture.evaluation.jdbc.ConnectionFactory;
@@ -17,6 +18,7 @@ import com.reavture.evaluation.pojo.Car;
 import com.reavture.evaluation.pojo.User;
 import com.reavture.evaluation.pojo.Offer;
 import com.reavture.evaluation.pojo.Offer.Status;
+import com.reavture.evaluation.pojo.Payment;
 import com.reavture.evaluation.pojo.User.AccessLevel;
 import com.reavture.evaluation.ui.CustomerCreateScreen;
 import com.reavture.evaluation.ui.CustomerSelectionScreen;
@@ -99,8 +101,12 @@ public class Driver {
 		boolean isEmployee = false;
 
 		boolean notLogin = true;
+		
+		List<Payment> paymentList = null;
 
 		List<Car> carList = null;
+		
+		PaymentDaoPostgres paymentPo = new PaymentDaoPostgres();
 
 		String customerSelection = null;
 
@@ -200,7 +206,10 @@ public class Driver {
 				}
 				break;
 			case "viewPayments":
-				//this may be a dead path
+				paymentList = paymentPo.viewUserPayments(userName);
+				for(Payment p: paymentList) {
+					System.out.println(p.toString());
+				}
 				break;
 			case "exit":
 				System.exit(0);

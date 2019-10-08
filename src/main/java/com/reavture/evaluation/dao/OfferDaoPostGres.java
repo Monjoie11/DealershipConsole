@@ -82,7 +82,7 @@ public class OfferDaoPostGres implements OfferDao {
 		return offer;
 		
 	}
-	
+
 
 	@Override
 	public List<Offer> getAllOffersPending() {
