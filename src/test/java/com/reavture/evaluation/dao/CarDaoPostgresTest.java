@@ -36,10 +36,10 @@ public class CarDaoPostgresTest {
 	private PreparedStatement addStmt = ConnectionFactory.getConnection().prepareStatement("insert into car (vin, make, model, year, price, username) values(?, ?, ?, ?, ?, ?)");
 
 	@Spy
-	private PreparedStatement readStmt = ConnectionFactory.getConnection().prepareStatement("select * from car");
+	private PreparedStatement readStmt = ConnectionFactory.getConnection().prepareStatement("select * from car where vin = ?");
 	
 	@Spy
-	private PreparedStatement updateStmt = ConnectionFactory.getConnection().prepareStatement("update car set status where vin = ?");
+	private PreparedStatement updateStmt = ConnectionFactory.getConnection().prepareStatement("update car set username = ? where vin = ?");
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -82,12 +82,29 @@ public class CarDaoPostgresTest {
 
 	@Test
 	public void testGetCarByVin() {
-		fail("Not yet implemented");
+		try {
+			when(conn.prepareStatement("select * from car where vin = ?")).thenReturn(readStmt);
+			carDao.setConn(conn);
+			
+			carDao.getCarByVin("112363");
+			Mockito.verify(readStmt).executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	@Test
 	public void testUpdateCarSold() {
-		fail("Not yet implemented");
+		try {
+			when(conn.prepareStatement("update car set username = ? where vin = ?")).thenReturn(updateStmt);
+			carDao.setConn(conn);
+			
+			carDao.updateCarSold("vin6", "monjoie11");
+			Mockito.verify(updateStmt).executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Test
