@@ -107,7 +107,7 @@ public class CarDaoPostgres implements CarDao {
 		
 		List<Car> carList = new ArrayList<Car>();
 		
-		Car car = new Car();
+		
 		
 		String sql = "select * from car where username = ?";
 		 
@@ -119,9 +119,10 @@ public class CarDaoPostgres implements CarDao {
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
+				Car car = new Car();
 				car.setVin(rs.getString(1));
 				car.setMake(rs.getString(2));
-				car.setMake(rs.getString(3));
+				car.setModel(rs.getString(3));
 				car.setYear(rs.getInt(4));
 				car.setPrice(rs.getDouble(5));
 				car.setuserName(rs.getString(6));

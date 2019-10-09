@@ -141,6 +141,8 @@ public class Driver {
 		while (notLogin) {
 
 		    user = login.userLogin();
+		    
+		    login.checkPassword(user);
 
 			String selection = secondScreen.pickType();
 
@@ -159,8 +161,13 @@ public class Driver {
 				} else {
 
 					System.out.println("it does not appear that you have a customer account");
-					secondScreen.pickType(); // TODO Auto-generated catch block
+					user = custCreate.createCustomer(user);
+					
 					trace("customer account else statment");
+					isCustomer = true;
+					notLogin = false;
+					break;
+					
 				}
 
 			case "employee":

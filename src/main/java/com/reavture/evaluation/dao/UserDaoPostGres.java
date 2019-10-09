@@ -6,9 +6,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.reavture.evaluation.jdbc.ConnectionFactory;
+import com.reavture.evaluation.pojo.Car;
 import com.reavture.evaluation.pojo.User;
 
 public class UserDaoPostGres implements UserDao {
@@ -74,10 +76,40 @@ public class UserDaoPostGres implements UserDao {
 
 	@Override
 	public List<User> getAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		List<User> userList = new ArrayList<User>();
+		
 
+			String sql = "select * from user_table" ;
+
+			PreparedStatement stmt;
+
+			
+
+			try {
+				stmt = conn.prepareStatement(sql);
+				ResultSet rs = stmt.executeQuery();
+
+				while (rs.next()) {
+					User user = new User();
+					user.setUserName(rs.getString(1));
+					user.setPassword(rs.getString(2));
+					user.setAccesslevel(User.AccessLevel.valueOf(rs.getString(3)));
+					user.setUserId(rs.getInt(4));
+					trace("get all users");
+					userList.add(user);
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			return userList;
+
+		}
+		
+		
+	
 	@Override
 	public void updateUsertoCustomer(String userName) {
 		String sql = "update user_table set accesslevel = ? where username = ?";
