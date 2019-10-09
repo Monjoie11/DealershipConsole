@@ -41,6 +41,9 @@ public class CarDaoPostgresTest {
 	@Spy
 	private PreparedStatement updateStmt = ConnectionFactory.getConnection().prepareStatement("update car set username = ? where vin = ?");
 	
+	@Spy
+	private PreparedStatement getCarsStmt = ConnectionFactory.getConnection().prepareStatement("select * from car where username = ?");
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -109,7 +112,15 @@ public class CarDaoPostgresTest {
 
 	@Test
 	public void testGetAllCarsByUser() {
-		fail("Not yet implemented");
+		try {
+			when(conn.prepareStatement("select * from car where username = ?")).thenReturn(getCarsStmt);
+			carDao.setConn(conn);
+			
+			carDao.getAllCarsByUser("monjoie11");
+			Mockito.verify(getCarsStmt).executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Test
